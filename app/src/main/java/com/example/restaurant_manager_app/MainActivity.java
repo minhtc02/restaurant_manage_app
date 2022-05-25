@@ -20,6 +20,7 @@ private ViewPager viewPager;
         setContentView(R.layout.activity_main);
         navigationView = findViewById(R.id.bottom);
         viewPager = findViewById(R.id.view_pager);
+        setUpViewPager();
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
