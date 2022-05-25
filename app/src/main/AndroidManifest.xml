@@ -9,10 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Restaurant_manager_app">
         <activity
-            android:name=".UserActivity"
+            android:name="com.example.restaurant_manager_app.UserActivity"
             android:exported="false" />
-        <activity android:name=".NotificationActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.restaurant_manager_app.NotificationActivity"
+            android:exported="false"/>
+        <activity android:name="com.example.restaurant_manager_app.login_activity"
+            android:exported="false"/>
+        <activity android:name="com.example.restaurant_manager_app.MainActivity"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
