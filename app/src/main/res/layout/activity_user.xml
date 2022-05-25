@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivity"
-    android:background="#FFFFF"
+    tools:context="com.example.restaurant_manager_app.UserActivity"
+    android:background="@color/white"
     android:orientation="vertical">
     <LinearLayout
         android:layout_marginBottom="?attr/actionBarSize"
