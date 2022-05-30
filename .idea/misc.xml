@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_gio_hang.xml" value="0.22826086956521738" />
         <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_notification.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_user.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/book_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/bookban_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/item_book_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/item_bookban_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/item_gio_hang.xml" value="0.2" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/notification_item.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>
