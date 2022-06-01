@@ -1,4 +1,4 @@
-package com.example.restaurant_manager_app;
+package com.example.restaurant_manager_app.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.restaurant_manager_app.R;
+import com.example.restaurant_manager_app.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,15 +28,15 @@ private ViewPager viewPager;
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.datBan:
-                        Toast.makeText(MainActivity.this, "Đặt Bàn", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Đặt Bàn", Toast.LENGTH_SHORT).show();
                         viewPager.setCurrentItem(0);
                         break;
                     case R.id.datMon:
-                        Toast.makeText(MainActivity.this, "Đặt Món", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Đặt Món", Toast.LENGTH_SHORT).show();
                         viewPager.setCurrentItem(1);
                         break;
                     case R.id.Account:
-                        Toast.makeText(MainActivity.this, "Tôi", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Tôi", Toast.LENGTH_SHORT).show();
                         viewPager.setCurrentItem(2);
                         break;
                 }
