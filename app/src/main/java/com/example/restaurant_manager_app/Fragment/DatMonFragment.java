@@ -1,5 +1,6 @@
 package com.example.restaurant_manager_app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
+import com.example.restaurant_manager_app.Activity.NotificationActivity;
 import com.example.restaurant_manager_app.Adapter.DishAdapter;
 import com.example.restaurant_manager_app.Api.ApiGetDish;
 import com.example.restaurant_manager_app.Interface.GetDish;
@@ -38,6 +41,9 @@ public class DatMonFragment extends Fragment implements GetDish {
         // Inflate the layout for this fragment
 
         view =  inflater.inflate(R.layout.fragment_dish, container, false);
+
+
+
         init();
         mapping();
         new ApiGetDish(this).execute();

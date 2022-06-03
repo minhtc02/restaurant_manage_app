@@ -3,26 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FF4D00">
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:background="@color/white"
-        android:hint="Tìm kiếm"/>
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/alerticon"
-        android:layout_marginLeft="50dp"/>
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/shoppingcard"
-        android:layout_marginLeft="20dp"/>
-</Toolbar>
 
     <ListView
         android:layout_width="match_parent"
