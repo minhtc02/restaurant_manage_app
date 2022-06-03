@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/notificaion_menu" android:icon="@drawable/alerticon"
-    android:title="thông báo" />
-    <item android:id="@+id/cart_menu" android:icon="@drawable/shoppingcard"
-        android:title="giỏ hàng" />
-</menu>
