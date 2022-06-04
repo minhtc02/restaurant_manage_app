@@ -73,9 +73,8 @@
                             android:orientation="horizontal"
                             android:gravity="end"
                             android:layout_height="match_parent">
-                            <androidx.appcompat.widget.AppCompatButton
+                            <Button
                                 android:id="@+id/btn_dangNhap"
-
                                 android:backgroundTint="@color/white"
                                 android:textColor="#7C7B79"
                                 android:text="Đăng nhập"
