@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_user.xml" value="0.1334853090172239" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_notification.xml" value="0.25" />
@@ -11,16 +12,27 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/book_layout.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_book_layout.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/notification_item.xml" value="0.25" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/drawable/ic_damon.xml" value="0.1665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_gio_hang.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_notification.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/book_layout.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/bookban_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/fragment_blank.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/fragment_dish.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/fragment_table.xml" value="0.10520833333333333" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_book_layout.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_bookban_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_dish.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_gio_hang.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_table.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/notification_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/menu/menu_bell_and_cart.xml" value="0.253125" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/menu/menu_bottom_nav.xml" value="0.16111111111111112" />
+<<<<<<< HEAD
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_gio_hang.xml" value="0.4" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.12613981762917933" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_main.xml" value="0.12613981762917933" />
@@ -36,6 +48,8 @@
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/item_dish.xml" value="0.264" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/item_table.xml" value="0.264" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/notification_item.xml" value="0.259375" />
+=======
+>>>>>>> cc2f9576217fa0ea9e85cebdec8548391ec2dcd0
       </map>
     </option>
   </component>

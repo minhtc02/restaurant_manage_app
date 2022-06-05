@@ -6,8 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.restaurant_manager_app.Fragment.AccountFragment;
+import com.example.restaurant_manager_app.Fragment.CartFragment;
 import com.example.restaurant_manager_app.Fragment.DatBanFragment;
 import com.example.restaurant_manager_app.Fragment.DatMonFragment;
+import com.example.restaurant_manager_app.Fragment.NotificationFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
@@ -24,6 +26,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new DatMonFragment();
             case 2:
                 return new AccountFragment();
+            case 3:
+                return new NotificationFragment();
+            case 4:
+                return new CartFragment();
             default:
                 return new DatBanFragment();
         }
@@ -31,6 +37,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 5;
     }
 }
