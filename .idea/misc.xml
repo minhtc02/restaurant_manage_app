@@ -21,18 +21,21 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_book_layout.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/item_bookban_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/menu/menu_bottom_nav.xml" value="0.16111111111111112" />
-        <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_gio_hang.xml" value="0.12613981762917933" />
+        <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_gio_hang.xml" value="0.4" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.12613981762917933" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_main.xml" value="0.12613981762917933" />
+        <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_notification.xml" value="0.259375" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_splash.xml" value="0.11296296296296296" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/activity_user.xml" value="0.259375" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/book_layout.xml" value="0.11296296296296296" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/bookban_layout.xml" value="0.12613981762917933" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/fragment_dish.xml" value="0.1" />
+        <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/fragment_table.xml" value="0.1" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/item_book_layout.xml" value="0.11296296296296296" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/item_bookban_layout.xml" value="0.1" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/item_dish.xml" value="0.264" />
         <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/item_table.xml" value="0.264" />
+        <entry key="..\:/androidlab/restaurant_manage_app/app/src/main/res/layout/notification_item.xml" value="0.259375" />
       </map>
     </option>
   </component>
