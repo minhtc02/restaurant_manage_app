@@ -1,6 +1,8 @@
 package com.example.restaurant_manager_app.Model;
 
-public class Admin {
+import java.io.Serializable;
+
+public class Admin implements Serializable {
     private String username;
     private String pass;
 
