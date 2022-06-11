@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.DishAdapter;
 import com.example.restaurant_manager_app.Api.ApiGetData;
+import com.example.restaurant_manager_app.Database.CartDAO;
 import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
@@ -33,14 +34,13 @@ public class DishFragment extends Fragment implements GetData {
     View view;
     MainActivity mMainActivity;
     String tableName = "getDataDish.php";
+    CartDAO dao;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         view =  inflater.inflate(R.layout.fragment_dish, container, false);
-
-
 
         init();
         mapping();
@@ -50,11 +50,13 @@ public class DishFragment extends Fragment implements GetData {
                return view;
     }
     private void init() {
+        dao = new CartDAO(getContext());
         list = new ArrayList<>();
     }
 
     private void mapping() {
         listView = view.findViewById(R.id.lvDish);
+
     }
 
     private void setClick() {
@@ -63,9 +65,12 @@ public class DishFragment extends Fragment implements GetData {
 //            mMainActivity.replaceFragment(dish);
 //        });
     }
+    public void addToCart(final Dish dish) {
+        dao.insert(dish);
+    }
 
     private void updateView() {
-        adapter = new DishAdapter(getContext(), 0, list);
+        adapter = new DishAdapter(getContext(), this, list);
         listView.setAdapter(adapter);
     }
 

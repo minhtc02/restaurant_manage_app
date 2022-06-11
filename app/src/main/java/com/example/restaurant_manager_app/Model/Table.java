@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 public class Table implements Serializable {
+    private String id;
     private String name;
     private String floor;
     private String status;
@@ -13,16 +14,26 @@ public class Table implements Serializable {
     public Table() {
     }
 
-    public Table(String name, String floor, String status) {
+    public Table(String id, String name, String floor, String status) {
+        this.id = id;
         this.name = name;
         this.floor = floor;
         this.status = status;
     }
     public Table(JSONObject o) throws JSONException {
+        id = o.getString("id");
         name = o.getString("name");
         floor = o.getString("floor");
         status = o.getString("status");
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

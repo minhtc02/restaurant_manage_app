@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 public class Dish implements Serializable {
+    private String id;
     private String name;
     private String describe;
     private String vote;
@@ -15,7 +16,8 @@ public class Dish implements Serializable {
     public Dish() {
     }
 
-    public Dish(String name, String describe, String vote, String price, String image) {
+    public Dish(String id, String name, String describe, String vote, String price, String image) {
+        this.id = id;
         this.name = name;
         this.describe = describe;
         this.vote = vote;
@@ -23,11 +25,20 @@ public class Dish implements Serializable {
         this.image = image;
     }
     public Dish(JSONObject o) throws JSONException {
+        id = o.getString("id");
         name = o.getString("name");
         describe = o.getString("describes");
         vote = o.getString("vote");
         price = o.getString("price");
         image = o.getString("image");
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

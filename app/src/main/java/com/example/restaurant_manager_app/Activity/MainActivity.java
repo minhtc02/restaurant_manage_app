@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,7 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.restaurant_manager_app.Model.Admin;
-import com.example.restaurant_manager_app.Model.GioHang;
+import com.example.restaurant_manager_app.Model.Cart;
 import com.example.restaurant_manager_app.R;
 import com.example.restaurant_manager_app.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,7 +34,7 @@ private ViewPager viewPager;
 ImageView imgBell, imgCart;
 
 ArrayList<Admin> arrAdmin;
-public static ArrayList<GioHang> manggiohang;
+public static ArrayList<Cart> manggiohang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
