@@ -1,9 +1,9 @@
 package com.example.restaurant_manager_app.Interface;
 
-public interface GetTable {
+public interface RunSql {
     void start();
 
-    void finish(String data);
+    void finish();
 
     void error();
 }

@@ -1,6 +1,5 @@
 package com.example.restaurant_manager_app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,15 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
-import com.example.restaurant_manager_app.Activity.NotificationActivity;
 import com.example.restaurant_manager_app.Adapter.DishAdapter;
-import com.example.restaurant_manager_app.Api.ApiGetDish;
-import com.example.restaurant_manager_app.Interface.GetDish;
+import com.example.restaurant_manager_app.Api.ApiGetData;
+import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
@@ -28,13 +25,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class DatMonFragment extends Fragment implements GetDish {
+public class DishFragment extends Fragment implements GetData {
     ListView listView;
     DishAdapter adapter;
     ArrayList<Dish> list;
     Dish dish;
     View view;
     MainActivity mMainActivity;
+    String tableName = "getDataDish.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,7 +44,7 @@ public class DatMonFragment extends Fragment implements GetDish {
 
         init();
         mapping();
-        new ApiGetDish(this).execute();
+        new ApiGetData(tableName,this).execute();
         updateView();
         setClick();
                return view;

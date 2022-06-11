@@ -14,9 +14,8 @@ import android.widget.Toast;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.TableAdapter;
-import com.example.restaurant_manager_app.Api.ApiGetTable;
-import com.example.restaurant_manager_app.Interface.GetTable;
-import com.example.restaurant_manager_app.Model.Dish;
+import com.example.restaurant_manager_app.Api.ApiGetData;
+import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Model.Table;
 import com.example.restaurant_manager_app.R;
 
@@ -26,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class DatBanFragment extends Fragment implements GetTable {
+public class TableFragment extends Fragment implements GetData {
 
     ListView listView;
     TableAdapter adapter;
@@ -34,6 +33,7 @@ public class DatBanFragment extends Fragment implements GetTable {
     Table table;
     View view;
     MainActivity mMainActivity;
+    String tableName = "getDataTable.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class DatBanFragment extends Fragment implements GetTable {
         view =  inflater.inflate(R.layout.fragment_table, container, false);
         init();
         mapping();
-        new ApiGetTable(this).execute();
+        new ApiGetData(tableName,this).execute();
         updateView();
         setClick();
         return view;

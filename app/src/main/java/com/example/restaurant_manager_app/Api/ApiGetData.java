@@ -2,7 +2,7 @@ package com.example.restaurant_manager_app.Api;
 
 import android.os.AsyncTask;
 
-import com.example.restaurant_manager_app.Interface.GetDish;
+import com.example.restaurant_manager_app.Interface.GetData;
 
 import java.io.IOException;
 
@@ -10,20 +10,22 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ApiGetDish extends AsyncTask<Void, Void, Void> {
+public class ApiGetData extends AsyncTask<Void, Void, Void> {
     String data;
-    GetDish getDish;
+    String tableName;
+    GetData getData;
     OkHttpClient client = new OkHttpClient();
 
-    public ApiGetDish(GetDish getDish) {
-        this.getDish = getDish;
-        this.getDish.start();
+    public ApiGetData(String tableName, GetData getData) {
+        this.tableName = tableName;
+        this.getData = getData;
+        this.getData.start();
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
         Request request = new Request.Builder()
-                .url("https://restaurantapp01.herokuapp.com/dataDish")
+                .url("https://mangareaderrecreate.000webhostapp.com/"+tableName)
                 .build();
         data = null;
         try {
@@ -38,9 +40,9 @@ public class ApiGetDish extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         if (data == null) {
-            this.getDish.error();
+            this.getData.error();
         } else {
-            this.getDish.finish(data);
+            this.getData.finish(data);
         }
     }
 }

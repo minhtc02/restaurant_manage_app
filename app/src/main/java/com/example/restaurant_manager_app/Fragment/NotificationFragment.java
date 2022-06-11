@@ -5,20 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.DishAdapter;
-import com.example.restaurant_manager_app.Api.ApiGetDish;
-import com.example.restaurant_manager_app.Interface.GetDish;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 

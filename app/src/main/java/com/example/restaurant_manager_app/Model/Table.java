@@ -22,6 +22,7 @@ public class Table implements Serializable {
         name = o.getString("name");
         floor = o.getString("floor");
         status = o.getString("status");
+
     }
 
     public String getName() {

@@ -24,7 +24,7 @@ public class Dish implements Serializable {
     }
     public Dish(JSONObject o) throws JSONException {
         name = o.getString("name");
-        describe = o.getString("describe");
+        describe = o.getString("describes");
         vote = o.getString("vote");
         price = o.getString("price");
         image = o.getString("image");
