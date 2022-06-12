@@ -14,26 +14,22 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import com.example.restaurant_manager_app.Fragment.DishFragment;
-import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
 import java.util.ArrayList;
 
-public class DishAdapter extends ArrayAdapter<Dish> implements Filterable {
+public class ViewDetailAdapter extends ArrayAdapter<Dish> implements Filterable {
     private final Context context;
     private final ArrayList<Dish> mListDish;
     DishFragment fragment;
-    OnClickItemDish onClickItemDish;
 
-    public DishAdapter(Context context, DishFragment fragment, ArrayList<Dish> mListDish,OnClickItemDish onClickItemDish) {
+    public ViewDetailAdapter(Context context, DishFragment fragment, ArrayList<Dish> mListDish) {
         super(context, 0, mListDish);
         this.context = context;
         this.mListDish = mListDish;
         this.fragment  = fragment;
-        this.onClickItemDish  = onClickItemDish;
     }
-
 
     @SuppressLint("InflateParams")
     @Override
@@ -47,19 +43,18 @@ public class DishAdapter extends ArrayAdapter<Dish> implements Filterable {
             TextView tvName = convertView.findViewById(R.id.tvName);
             TextView tvVote = convertView.findViewById(R.id.tvVote);
             TextView tvPrice = convertView.findViewById(R.id.tvPrice);
+            TextView tvDescribe = convertView.findViewById(R.id.tvDescribe);
             ImageView imgDish = convertView.findViewById(R.id.imgDish);
             Button btnAddToCart = convertView.findViewById(R.id.btnAddToCart);
 
             tvName.setText(dish.getName());
             tvVote.setText(dish.getVote());
             tvPrice.setText(dish.getPrice());
+            tvDescribe.setText(dish.getDescribe());
             Glide.with(context).load(dish.getImage()).into(imgDish);
 
             btnAddToCart.setOnClickListener(v -> {
                 fragment.addToCart(dish);
-            });
-            imgDish.setOnClickListener(v -> {
-                fragment.setClick(dish);
             });
         }
 

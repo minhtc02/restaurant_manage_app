@@ -9,10 +9,12 @@ import com.example.restaurant_manager_app.Fragment.AccountFragment;
 import com.example.restaurant_manager_app.Fragment.AddDishFragment;
 import com.example.restaurant_manager_app.Fragment.CartFragment;
 import com.example.restaurant_manager_app.Fragment.DeleteDishFragment;
+import com.example.restaurant_manager_app.Fragment.OrderFragment;
 import com.example.restaurant_manager_app.Fragment.TableFragment;
 import com.example.restaurant_manager_app.Fragment.DishFragment;
 import com.example.restaurant_manager_app.Fragment.NotificationFragment;
 import com.example.restaurant_manager_app.Fragment.UpdateDishFragment;
+import com.example.restaurant_manager_app.Fragment.ViewDetailFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
@@ -31,9 +33,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 return new AccountFragment();
             case 3:
-                return new NotificationFragment();
+                return new OrderFragment();
             case 4:
                 return new CartFragment();
+            case 5:
+                return new ViewDetailFragment();
             default:
                 return new TableFragment();
         }
@@ -41,6 +45,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 }

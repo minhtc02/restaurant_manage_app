@@ -24,7 +24,7 @@ public class login_activity extends AppCompatActivity {
         ed_pass = findViewById(R.id.ed_pass_login);
         btn_login = findViewById(R.id.button_login);
         btn_login.setOnClickListener(v -> {
-            if(ed_user.getText().toString() == admin.getUsername() && ed_pass.getText().toString() == admin.getPass()){
+            if(ed_user.getText().toString() == admin.getUsername() && ed_pass.getText().toString() == admin.getPassword()){
                 startActivity(new Intent(this, MainActivity.class));
             }else{
                 Toast.makeText(this , "SomeThing Wrong !!!", Toast.LENGTH_LONG).show();

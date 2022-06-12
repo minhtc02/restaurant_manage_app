@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.restaurant_manager_app.Model.Cart;
 import com.example.restaurant_manager_app.Model.Dish;
 
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ public class CartDAO {
     //insert
     public long insert(Dish obj) {
         ContentValues values = new ContentValues();
+        values.put("id", obj.getId());
         values.put("name", obj.getName());
         values.put("describe", obj.getDescribe());
         values.put("vote", obj.getVote());
@@ -31,9 +31,14 @@ public class CartDAO {
 
         return db.insert("Cart", null, values);
     }
+
     //delete
     public void delete(String id) {
         db.delete("Cart", "id=?", new String[]{id});
+    }
+    //delete
+    public void resetC() {
+        db.delete("Cart", "", null);
     }
 
     // get tat ca data
@@ -42,29 +47,37 @@ public class CartDAO {
         return getData(sql);
     }
 
-    public String getDishes(){
+    public String getDishes() {
 
         String sql = "SELECT name FROM Cart";
         List list = new ArrayList();
-        Cursor c = db.rawQuery(sql,null);
+        Cursor c = db.rawQuery(sql, null);
         while (c.moveToNext()) {
             @SuppressLint("Range") String a = c.getString(c.getColumnIndex("name"));
             list.add(a);
         }
         return list.toString();
     }
+
     int a;
+
     @SuppressLint("Range")
-    public String getBill(){
+    public String getBill() {
 
         String sql = "SELECT SUM(price) AS \"total\"\n" +
                 "FROM Cart";
-        Cursor c = db.rawQuery(sql,null);
+        Cursor c = db.rawQuery(sql, null);
         while (c.moveToNext()) {
             a = Integer.parseInt(c.getString(c.getColumnIndex("total")));
 
         }
         return String.valueOf(a);
+    }
+
+    public void resetCart() {
+        String sql = "DELETE FROM Cart";
+        Cursor c = db.rawQuery(sql, null);
+
     }
 
 
@@ -74,6 +87,7 @@ public class CartDAO {
         @SuppressLint("Recycle") Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()) {
             Dish obj = new Dish();
+            obj.setId(c.getString(c.getColumnIndex("id")));
             obj.setName(c.getString(c.getColumnIndex("name")));
             obj.setDescribe(c.getString(c.getColumnIndex("describe")));
             obj.setVote(c.getString(c.getColumnIndex("vote")));
@@ -84,10 +98,10 @@ public class CartDAO {
         return list;
     }
 
-    public int checkExistsCart(String id) {
+    public int checkCart() {
         int check = 1;
-        String getC = "SELECT * FROM Cart WHERE id=" + id;
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getC, null);
+        String getLS = "SELECT * FROM Cart";
+        Cursor cursor = db.rawQuery(getLS, null);
         if (cursor.getCount() != 0) {
             check = -1;
         }

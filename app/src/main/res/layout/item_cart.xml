@@ -51,6 +51,13 @@
                 android:paddingLeft="50dp"/>
 
         </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Xóa"
+            android:id="@+id/btnDelete"/>-
+
+
 
     </LinearLayout>
 </LinearLayout>

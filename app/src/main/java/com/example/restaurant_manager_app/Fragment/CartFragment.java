@@ -1,5 +1,7 @@
 package com.example.restaurant_manager_app.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +53,7 @@ public class CartFragment extends Fragment implements RunSql {
     private void init() {
         list = new ArrayList<>();
         dao = new CartDAO(getContext());
+        mMainActivity = (MainActivity) getActivity();
     }
     private void mapping() {
         listView   = view.findViewById(R.id.lvCart);
@@ -59,10 +62,17 @@ public class CartFragment extends Fragment implements RunSql {
     }
     private void setUp() {
         list = (ArrayList<Dish>) dao.getAll();
-        adapter = new CartAdapter(getContext(), 0, list);
+        adapter = new CartAdapter(getContext(), this, list);
         listView.setAdapter(adapter);
-        bill = dao.getBill();
-        tvBill.setText("Tổng tiền: "+bill);
+        if (dao.checkCart()>0){
+            Toast.makeText(getContext(),"Giỏ hàng trống ",Toast.LENGTH_SHORT).show();
+            tvBill.setText("Tổng tiền: 0");
+        }
+        else {
+            bill = dao.getBill();
+            tvBill.setText("Tổng tiền: "+bill);
+        }
+
     }
     private void addOrder() {
         String dishes = dao.getDishes();
@@ -74,11 +84,30 @@ public class CartFragment extends Fragment implements RunSql {
                 "')";
         Log.i(TAG,sql);
         new ApiRunSql(sql,this).execute();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Đã tạo đơn, vui lòng kiểm tra trong phần thông báo");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert  = builder.create();
+        builder.show();
+        dao.resetC();
+        setUp();
+        //mMainActivity.startNoti(dishes);
     }
     private void setClick() {
         btnOrder.setOnClickListener(v -> {
             addOrder();
         });
+    }
+    public void deleteFromCart(final String id){
+        //Toast.makeText(getActivity(),"đang xóa"+id,Toast.LENGTH_SHORT).show();
+        dao.delete(id);
+        setUp();
     }
 
 

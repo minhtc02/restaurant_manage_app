@@ -15,13 +15,13 @@ import okhttp3.Response;
 public class ApiRunSql extends AsyncTask<Void, Void, Void> {
     String data;
     String sql;
-    RunSql postDish;
+    RunSql runSql;
     OkHttpClient client = new OkHttpClient();
 
-    public ApiRunSql(String sql, RunSql postDish) {
+    public ApiRunSql(String sql, RunSql runSql) {
         this.sql = sql;
-        this.postDish = postDish;
-        this.postDish.start();
+        this.runSql = runSql;
+        this.runSql.start();
     }
 
     @Override
@@ -45,13 +45,13 @@ public class ApiRunSql extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         if (data == null) {
-            this.postDish.error();
+            this.runSql.error();
         } else {
             if(data.equals("ok")){
-                this.postDish.finish();
+                this.runSql.finish();
             }
             else {
-                this.postDish.error();
+                this.runSql.error();
             }
         }
     }

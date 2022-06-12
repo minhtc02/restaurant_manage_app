@@ -13,13 +13,13 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottom"
         android:layout_marginTop="55dp" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_bottom_nav"
-        ></com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/menu_bottom_nav"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <Toolbar
         android:layout_width="match_parent"
@@ -47,4 +47,8 @@
             android:layout_marginLeft="20dp"
             android:src="@drawable/shoppingcard" />
     </Toolbar>
+    <FrameLayout
+        android:id="@+id/flContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".Fragment.UpdateTableFragment">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Sửa thông tin bàn"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_gravity="center"/>
+    <EditText
+        android:id="@+id/edID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập ID bàn"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập tên mới bàn"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/edFloor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tầng"
+        android:layout_marginTop="15dp"
+        />
+    <EditText
+        android:id="@+id/edStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tình trạng"
+        android:layout_marginTop="15dp"
+        />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sửa"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        />
+
+</LinearLayout>

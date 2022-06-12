@@ -6,4 +6,7 @@ public class sever {
     public static String dataTable = localhost + "dataTable";
     public static String dataDish = localhost + "dataDish";
     public static String dataStaff = localhost + "dataStaff";
+
+    //admin https://mangareaderrecreate.000webhostapp.com/getDataAdmin
+    //nhan vien https://mangareaderrecreate.000webhostapp.com/getDataStaff
 }

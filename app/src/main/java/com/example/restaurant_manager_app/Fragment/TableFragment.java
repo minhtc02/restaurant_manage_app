@@ -1,6 +1,8 @@
 package com.example.restaurant_manager_app.Fragment;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +17,9 @@ import android.widget.Toast;
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.TableAdapter;
 import com.example.restaurant_manager_app.Api.ApiGetData;
+import com.example.restaurant_manager_app.Api.ApiRunSql;
 import com.example.restaurant_manager_app.Interface.GetData;
+import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.Model.Table;
 import com.example.restaurant_manager_app.R;
 
@@ -33,6 +37,7 @@ public class TableFragment extends Fragment implements GetData {
     Table table;
     View view;
     MainActivity mMainActivity;
+    RunSql runSql;
     String tableName = "getDataTable.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,10 +61,26 @@ public class TableFragment extends Fragment implements GetData {
     }
 
     private void setClick() {
-//        listView.setOnItemClickListener((parent, view1, position, id) -> {
-//            dish = list.get(position);
-//            mMainActivity.replaceFragment(dish);
-//        });
+        listView.setOnItemClickListener((parent, view1, position, id) -> {
+            table  = list.get(position);
+            String sql = "INSERT INTO `orders` (`id`, `name`, `phoneNum`, `dishes`, `time`, `bill`) VALUES (NULL, 'minh', " +
+                    "'012345678', 'bàn " +
+                    table.getName()+
+                    "', '7:00', '50000')";
+            //new ApiRunSql(sql,runSql).execute();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setMessage("Đã tạo đơn, vui lòng kiểm tra trong phần thông báo");
+            builder.setCancelable(true);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alert  = builder.create();
+            builder.show();
+            //Toast.makeText(getActivity(), "Loading"+table.getName(), Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void updateView() {

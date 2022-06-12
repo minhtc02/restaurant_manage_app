@@ -11,8 +11,9 @@
         android:layout_width="404dp"
         android:layout_height="0dp"
         android:layout_marginBottom="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/tvBill"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ListView>
 
@@ -26,7 +27,8 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btnOrder"
         app:layout_constraintEnd_toEndOf="@+id/btnOrder"
-        app:layout_constraintTop_toBottomOf="@+id/lvCart" />
+        app:layout_constraintTop_toBottomOf="@+id/lvCart"
+        app:layout_constraintVertical_bias="0.954" />
 
     <Button
         android:id="@+id/btnOrder"
@@ -38,9 +40,9 @@
         android:text="Đặt Món"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBill" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

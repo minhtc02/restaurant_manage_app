@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper {
     final String createTable =
-            "create table Cart (id TEXT  PRIMARY KEY , name TEXT , describe TEXT, vote TEXT, price INTEGER, image TEXT)";
+            "create table Cart (id TEXT  PRIMARY KEY, name TEXT , describe TEXT, vote TEXT, price INTEGER, image TEXT)";
 
     final String dropTable = "drop table if exists Cart";
 
