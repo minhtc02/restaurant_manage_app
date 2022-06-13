@@ -2,6 +2,7 @@ package com.example.restaurant_manager_app.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import com.example.restaurant_manager_app.Activity.Deltai_activity;
 import com.example.restaurant_manager_app.Fragment.DishFragment;
 import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Model.Dish;
@@ -59,7 +61,9 @@ public class DishAdapter extends ArrayAdapter<Dish> implements Filterable {
                 fragment.addToCart(dish);
             });
             imgDish.setOnClickListener(v -> {
-                fragment.setClick(dish);
+               Intent intent = new Intent(getContext(), Deltai_activity.class);
+               intent.putExtra("deltais", mListDish.get(position));
+                getContext().startActivity(intent);
             });
         }
 

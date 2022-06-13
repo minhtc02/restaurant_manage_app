@@ -91,4 +91,12 @@
         android:backgroundTint="#FF4D00"
         android:text="Thêm vào giở hàng"
          />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:backgroundTint="#7CB342"
+        android:text="Quay Lại"
+        />
 </LinearLayout>
