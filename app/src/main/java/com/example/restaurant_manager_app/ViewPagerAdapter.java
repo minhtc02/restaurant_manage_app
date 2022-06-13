@@ -26,8 +26,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-               // return new DatBanFragment();
-                return new TableFragment();
+                return new TableFragment();               //return new TableFragment();
             case 1:
                 return new DishFragment();
             case 2:

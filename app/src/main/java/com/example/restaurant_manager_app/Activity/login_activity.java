@@ -42,7 +42,7 @@ public class login_activity extends AppCompatActivity implements GetData {
             if(ed_user.getText().toString().trim() == "" || ed_pass.getText().toString().trim() == ""){
                 Toast.makeText(this, "Bạn phải điền đầy đủ tài khoản và mật khẩu !!!", Toast.LENGTH_SHORT).show();
             }
-            else if(ed_user.getText().toString().trim() == admin.getUsername().trim() && ed_pass.getText().toString().trim() == admin.getPassword().trim()){
+            else if(ed_user.getText().toString().trim().equals(admin.getUsername().trim()) && ed_pass.getText().toString().trim().equals(admin.getPassword().trim())){
                 Log.d("TAG", "onCreate: " + admin.getUsername() + admin.getPassword());
                 startActivity(new Intent(this, MainActivity.class));
             }else{
