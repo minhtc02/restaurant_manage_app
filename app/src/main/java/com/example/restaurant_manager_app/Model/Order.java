@@ -12,6 +12,7 @@ public class Order implements Serializable {
     private String dishes;
     private String time;
     private String bill;
+    private String status;
 
     public Order(JSONObject o) throws JSONException {
         id = o.getString("id");
@@ -20,18 +21,20 @@ public class Order implements Serializable {
         dishes = o.getString("dishes");
         time = o.getString("time");
         bill = o.getString("bill");
+        status = o.getString("status");
     }
 
     public Order() {
     }
 
-    public Order(String id, String name, String phoneNum, String dishes, String time, String bill) {
+    public Order(String id, String name, String phoneNum, String dishes, String time, String bill, String status) {
         this.id = id;
         this.name = name;
         this.phoneNum = phoneNum;
         this.dishes = dishes;
         this.time = time;
         this.bill = bill;
+        this.status = status;
     }
 
     public String getId() {
@@ -80,5 +83,13 @@ public class Order implements Serializable {
 
     public void setBill(String bill) {
         this.bill = bill;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

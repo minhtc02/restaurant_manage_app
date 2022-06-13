@@ -56,7 +56,10 @@ public class CartDAO {
             @SuppressLint("Range") String a = c.getString(c.getColumnIndex("name"));
             list.add(a);
         }
-        return list.toString();
+        String a = list.toString();
+        a = a.replace("[","");
+        a = a.replace("]","");
+        return a;
     }
 
     int a;

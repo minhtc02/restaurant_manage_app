@@ -76,12 +76,12 @@ public class CartFragment extends Fragment implements RunSql {
     }
     private void addOrder() {
         String dishes = dao.getDishes();
-        String sql = "INSERT INTO `orders` (`id`, `name`, `phoneNum`, `dishes`, `time`, `bill`) VALUES (NULL, 'minh', " +
+        String sql = "INSERT INTO `orders` (`id`, `name`, `phoneNum`, `dishes`, `time`, `bill`, `status`) VALUES (NULL, 'minh', " +
                 "'012345678', '" +
                 dishes+
                 "', '7:00', '" +
                 bill+
-                "')";
+                "', 'Đang xử lý')";
         Log.i(TAG,sql);
         new ApiRunSql(sql,this).execute();
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

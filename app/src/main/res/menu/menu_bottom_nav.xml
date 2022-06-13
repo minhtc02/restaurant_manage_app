@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:id="@+id/datBan" android:title="Đặt Bàn" android:icon="@drawable/ic_them"></item>
     <item android:id="@+id/datMon" android:title="Đặt Món" android:icon="@drawable/ic_damon"></item>
     <item android:id="@+id/Account" android:title="Tôi" android:icon="@drawable/ic_account"></item>

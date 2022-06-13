@@ -49,6 +49,9 @@ public class OrderAdapter extends ArrayAdapter<Order> implements Filterable {
             TextView tvDishes = convertView.findViewById(R.id.tvDishes);
             TextView tvTime = convertView.findViewById(R.id.tvTime);
             TextView tvBill = convertView.findViewById(R.id.tvBill);
+            TextView tvStatus = convertView.findViewById(R.id.tvStatus);
+            TextView tvType = convertView.findViewById(R.id.tvType);
+            ImageView imgDish = convertView.findViewById(R.id.imgDish);
             Button btnHelp = convertView.findViewById(R.id.btnHelp);
 
             tvId.setText(order.getId());
@@ -57,6 +60,11 @@ public class OrderAdapter extends ArrayAdapter<Order> implements Filterable {
             tvDishes.setText(order.getDishes());
             tvTime.setText(order.getTime());
             tvBill.setText(order.getBill());
+            tvStatus.setText(order.getStatus());
+            if (order.getDishes().contains("bàn")){
+                tvType.setText("Đồ ăn/ Bàn #");
+                imgDish.setImageResource(R.drawable.table_img);
+            }
             btnHelp.setOnClickListener(v -> {
                 fragment.helper();
             });

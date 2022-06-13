@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.DishAdapter;
+import com.example.restaurant_manager_app.Adapter.FindAdapter;
+import com.example.restaurant_manager_app.Api.ApiFindData;
 import com.example.restaurant_manager_app.Api.ApiGetData;
 import com.example.restaurant_manager_app.Database.CartDAO;
+import com.example.restaurant_manager_app.Interface.FindData;
 import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Model.Dish;
@@ -30,22 +34,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class DishFragment extends Fragment implements GetData {
+public class FindFragment extends Fragment implements FindData {
     ListView listView;
-    DishAdapter adapter;
+    FindAdapter adapter;
     ArrayList<Dish> list;
     View view;
     MainActivity mMainActivity;
-    String tableName = "getDataDish.php";
     CartDAO dao;
-    SwipeRefreshLayout mySwipeRefreshLayout;
+    ImageView imgFind;
+    EditText edName;
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
-
-    public DishFragment() {
+    public FindFragment() {
     }
 
 
@@ -54,20 +53,13 @@ public class DishFragment extends Fragment implements GetData {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        view = inflater.inflate(R.layout.fragment_dish, container, false);
+        view = inflater.inflate(R.layout.fragment_find, container, false);
 
         init();
         mapping();
-        new ApiGetData(tableName, this).execute();
         updateView();
-        mySwipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        myUpdateOperation();
-                    }
-                }
-        );
+        setClick();
+
         return view;
     }
 
@@ -77,20 +69,24 @@ public class DishFragment extends Fragment implements GetData {
         list = new ArrayList<>();
         mMainActivity = (MainActivity) getActivity();
     }
-    public void myUpdateOperation(){
-        new ApiGetData(tableName, this).execute();
-        mySwipeRefreshLayout.setRefreshing(false);
-        updateView();
-    }
 
     private void mapping() {
-        listView = view.findViewById(R.id.lvDish);
-        mySwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
+        listView = view.findViewById(R.id.lvFind);
+        imgFind = view.findViewById(R.id.imgFind);
+        edName = view.findViewById(R.id.edName);
+
     }
 
 
-    public void setClick(Dish dish) {
-        mMainActivity.replaceFragment();
+    public void setClick() {
+        imgFind.setOnClickListener(v -> {
+            findDish();
+        });
+    }
+    public void findDish(){
+        String name = "'"+edName.getText().toString()+"'";
+        new ApiFindData(name,this).execute();
+        updateView();
     }
 
     public void addToCart(final Dish dish) {
@@ -110,7 +106,7 @@ public class DishFragment extends Fragment implements GetData {
     }
 
     private void updateView() {
-        adapter = new DishAdapter(getContext(), this, list);
+        adapter = new FindAdapter(getContext(), this, list);
         listView.setAdapter(adapter);
     }
 
@@ -139,6 +135,7 @@ public class DishFragment extends Fragment implements GetData {
     public void error() {
         Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
     }
+
 
 
 }

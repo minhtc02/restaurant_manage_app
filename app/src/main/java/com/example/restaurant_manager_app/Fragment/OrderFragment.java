@@ -1,6 +1,8 @@
 package com.example.restaurant_manager_app.Fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.DishAdapter;
@@ -37,6 +40,7 @@ public class OrderFragment extends Fragment implements GetData {
     View view;
     MainActivity mMainActivity;
     String tableName = "getDataOrder.php";
+    SwipeRefreshLayout mySwipeRefreshLayout;
 
 
     @Override
@@ -50,8 +54,20 @@ public class OrderFragment extends Fragment implements GetData {
         mapping();
         new ApiGetData(tableName, this).execute();
         updateView();
-
+        mySwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        myUpdateOperation();
+                    }
+                }
+        );
         return view;
+    }
+    public void myUpdateOperation(){
+        new ApiGetData(tableName, this).execute();
+        mySwipeRefreshLayout.setRefreshing(false);
+        updateView();
     }
 
     public OrderFragment() {
@@ -63,8 +79,8 @@ public class OrderFragment extends Fragment implements GetData {
     }
 
     private void mapping() {
-        listView = view.findViewById(R.id.lvNotification);
-
+        listView = view.findViewById(R.id.lvOrder);
+        mySwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
     }
 
 
@@ -76,6 +92,19 @@ public class OrderFragment extends Fragment implements GetData {
     }
 
     public void helper() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Vui lòng liên hệ : 012345678" +"\n"+
+                "Để được hỗ trợ sớm nhất có thể ");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        builder.show();
         Toast.makeText(getActivity(),"Comming soon",Toast.LENGTH_SHORT).show();
     }
 

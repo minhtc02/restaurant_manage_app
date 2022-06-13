@@ -16,19 +16,20 @@ import com.bumptech.glide.Glide;
 
 import com.example.restaurant_manager_app.Activity.Deltai_activity;
 import com.example.restaurant_manager_app.Fragment.DishFragment;
+import com.example.restaurant_manager_app.Fragment.FindFragment;
 import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
 import java.util.ArrayList;
 
-public class DishAdapter extends ArrayAdapter<Dish> implements Filterable {
+public class FindAdapter extends ArrayAdapter<Dish> implements Filterable {
     private final Context context;
     private final ArrayList<Dish> mListDish;
-    DishFragment fragment;
+    FindFragment fragment;
 
 
-    public DishAdapter(Context context, DishFragment fragment, ArrayList<Dish> mListDish) {
+    public FindAdapter(Context context, FindFragment fragment, ArrayList<Dish> mListDish) {
         super(context, 0,mListDish );
         this.context = context;
         this.mListDish = mListDish;
@@ -60,8 +61,8 @@ public class DishAdapter extends ArrayAdapter<Dish> implements Filterable {
                 fragment.addToCart(dish);
             });
             imgDish.setOnClickListener(v -> {
-               Intent intent = new Intent(getContext(), Deltai_activity.class);
-               intent.putExtra("deltais", mListDish.get(position));
+                Intent intent = new Intent(getContext(), Deltai_activity.class);
+                intent.putExtra("deltais", mListDish.get(position));
                 getContext().startActivity(intent);
             });
         }

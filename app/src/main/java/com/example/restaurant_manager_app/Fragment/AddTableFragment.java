@@ -71,7 +71,6 @@ public class AddTableFragment extends Fragment implements RunSql {
                 "', '" +
                 status+
                 "')";
-        Log.i(TAG,sql);
         new ApiRunSql(sql,this).execute();
     }
 

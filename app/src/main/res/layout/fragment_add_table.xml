@@ -36,5 +36,13 @@
         android:hint="Trạng thái"
         android:layout_marginTop="15dp"
         />
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thêm"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        />
 
 </LinearLayout>

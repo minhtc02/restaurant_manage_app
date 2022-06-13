@@ -37,7 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="1dp"
         android:backgroundTint="#FF4D00"
-        android:text="Đặt Món"
+        android:text="Đặt Hàng"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

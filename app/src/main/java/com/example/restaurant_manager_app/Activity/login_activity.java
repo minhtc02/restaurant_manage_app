@@ -43,6 +43,8 @@ public class login_activity extends AppCompatActivity implements GetData {
                 Toast.makeText(this, "Bạn phải điền đầy đủ tài khoản và mật khẩu !!!", Toast.LENGTH_SHORT).show();
             }
             else if(ed_user.getText().toString().trim().equals(admin.getUsername().trim()) && ed_pass.getText().toString().trim().equals(admin.getPassword().trim())){
+                //tai khoan admin
+                //mat khau passwordAdmin
                 Log.d("TAG", "onCreate: " + admin.getUsername() + admin.getPassword());
                 startActivity(new Intent(this, Main_Admin.class));
             }else{

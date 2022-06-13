@@ -27,11 +27,13 @@
         android:layout_alignParentTop="false"
         android:background="#FF4D00">
 
-        <EditText
+        <TextView
+            android:id="@+id/edFind"
             android:layout_width="250dp"
             android:layout_height="35dp"
             android:background="@color/white"
-            android:hint="Tìm kiếm" />
+            android:hint="Tìm kiếm"
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/imgBell"
