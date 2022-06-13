@@ -30,7 +30,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class TableFragment extends Fragment implements GetData {
-
     ListView listView;
     TableAdapter adapter;
     ArrayList<Table> list;
