@@ -107,5 +107,14 @@ public class CartDAO {
         }
         return check;
     }
+    public int checkExistsManga(String id) {
+        int check = 1;
+        String getMG = "SELECT * FROM Cart WHERE name=" + "'"+id+"'" ;
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getMG, null);
+        if (cursor.getCount() != 0) {
+            check = -1;
+        }
+        return check;
+    }
 }
 

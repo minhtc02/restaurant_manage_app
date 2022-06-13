@@ -18,8 +18,10 @@ import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.TableAdapter;
 import com.example.restaurant_manager_app.Api.ApiGetData;
 import com.example.restaurant_manager_app.Api.ApiRunSql;
+import com.example.restaurant_manager_app.Database.CartDAO;
 import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Interface.RunSql;
+import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.Model.Table;
 import com.example.restaurant_manager_app.R;
 
@@ -28,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class TableFragment extends Fragment implements GetData {
     ListView listView;
@@ -36,8 +39,9 @@ public class TableFragment extends Fragment implements GetData {
     Table table;
     View view;
     MainActivity mMainActivity;
-    RunSql runSql;
     String tableName = "getDataTable.php";
+    CartDAO dao;
+    Dish dish;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class TableFragment extends Fragment implements GetData {
     }
     private void init() {
         list = new ArrayList<>();
+        dao = new CartDAO(getContext());
     }
 
     private void mapping() {
@@ -61,23 +66,45 @@ public class TableFragment extends Fragment implements GetData {
 
     private void setClick() {
         listView.setOnItemClickListener((parent, view1, position, id) -> {
+            dao = new CartDAO(getContext());
             table  = list.get(position);
-            String sql = "INSERT INTO `orders` (`id`, `name`, `phoneNum`, `dishes`, `time`, `bill`) VALUES (NULL, 'minh', " +
-                    "'012345678', 'bàn " +
-                    table.getName()+
-                    "', '7:00', '50000')";
-            //new ApiRunSql(sql,runSql).execute();
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage("Đã tạo đơn, vui lòng kiểm tra trong phần thông báo");
-            builder.setCancelable(true);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+            dish = new Dish();
+            dish.setId("ban"+table.getId());
+            dish.setName(table.getName()+" / "+table.getFloor());
+            dish.setDescribe("10 điểm-");
+            dish.setVote("5");
+            dish.setPrice("50000");
+            dish.setImage("https://bizweb.dktcdn.net/100/121/953/products/ban-ghe-nha-hang-174350.jpg?v=1505367058920");
+            if (table.getStatus().equals("Trống")){
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Bạn muốn đặt bàn này ?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Đúng", (dialog, which) -> {
+                    String ids = dish.getId();
+                    if (dao.checkExistsManga(ids) > 0){
+                        dao.insert(dish);
+                        Toast.makeText(getActivity(), "Đặt bàn thành công", Toast.LENGTH_SHORT).show();
+                    }
                     dialog.cancel();
-                }
-            });
-            AlertDialog alert  = builder.create();
-            builder.show();
+
+                });
+                builder.setNegativeButton("Không", (dialog, which) -> dialog.cancel());
+                builder.show();
+            }
+            else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Rất xin lỗi!! Bàn đã được đặt...");
+                builder.setCancelable(true);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert  = builder.create();
+                builder.show();
+            }
+
             //Toast.makeText(getActivity(), "Loading"+table.getName(), Toast.LENGTH_SHORT).show();
         });
     }

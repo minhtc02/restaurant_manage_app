@@ -200,7 +200,6 @@ public static ArrayList<Cart> manggiohang;
                             JSONObject jsonObject = response.getJSONObject(i);
                             username = jsonObject.getString("username");
                             pass = jsonObject.getString("password");
-
                             arrAdmin.add(new Admin(username, pass));
 
                         } catch (JSONException e) {
