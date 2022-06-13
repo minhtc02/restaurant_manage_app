@@ -44,7 +44,7 @@ public class login_activity extends AppCompatActivity implements GetData {
             }
             else if(ed_user.getText().toString().trim().equals(admin.getUsername().trim()) && ed_pass.getText().toString().trim().equals(admin.getPassword().trim())){
                 Log.d("TAG", "onCreate: " + admin.getUsername() + admin.getPassword());
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, Main_Admin.class));
             }else{
                 Log.d("TAG", "onCreate: " + admin.getUsername() + " " + admin.getPassword());
                 Toast.makeText(this , "Thông tin đăng nhập sai !!!", Toast.LENGTH_LONG).show();

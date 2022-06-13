@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Restaurant_manager_app" >
-        <activity android:name=".Activity.Deltai_activity"
+        <activity
+            android:name=".Activity.Main_Admin"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Deltai_activity"
             android:exported="false" />
         <activity
             android:name=".Activity.Check_internet"
