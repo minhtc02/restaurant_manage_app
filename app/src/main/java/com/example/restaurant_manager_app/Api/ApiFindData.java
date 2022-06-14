@@ -15,11 +15,13 @@ import okhttp3.Response;
 
 public class ApiFindData extends AsyncTask<Void, Void, Void> {
     String data;
+    String tableName;
     String name;
     FindData findData;
     OkHttpClient client = new OkHttpClient();
 
-    public ApiFindData(String name, FindData findData) {
+    public ApiFindData(String tableName, String name, FindData findData) {
+        this.tableName = tableName;
         this.name = name;
         this.findData = findData;
         this.findData.start();
@@ -30,7 +32,7 @@ public class ApiFindData extends AsyncTask<Void, Void, Void> {
         RequestBody body = new FormBody.Builder().add("name",name)
                 .build();
         Request request = new Request.Builder()
-                .url("https://mangareaderrecreate.000webhostapp.com/findDataDish.php")
+                .url("https://mangareaderrecreate.000webhostapp.com/"+tableName)
                 .post(body)
                 .build();
         data = null;

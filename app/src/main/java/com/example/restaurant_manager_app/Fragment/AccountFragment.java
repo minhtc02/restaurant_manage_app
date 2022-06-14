@@ -11,11 +11,10 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.restaurant_manager_app.Activity.login_activity;
+import com.example.restaurant_manager_app.Activity.Login_Activity;
 import com.example.restaurant_manager_app.Api.ApiGetData;
 import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Model.Admin;
-import com.example.restaurant_manager_app.Model.Table;
 import com.example.restaurant_manager_app.R;
 
 import org.json.JSONArray;
@@ -39,7 +38,7 @@ public class AccountFragment extends Fragment implements GetData {
         View view =  inflater.inflate(R.layout.activity_user, container, false);
         btn_log = view.findViewById(R.id.btn_dangNhap);
         btn_log.setOnClickListener(v-> {
-            startActivity(new Intent(getContext(), login_activity.class));
+            startActivity(new Intent(getContext(), Login_Activity.class));
         });
         init();
         new ApiGetData(tableName,this).execute();

@@ -69,15 +69,6 @@ public class MainActivity extends AppCompatActivity implements OnClickItemDish {
             startServices(name);
         }
 
-
-//        for (int i = 0; i < listThongBao.size(); i++) {
-//            String thoiGian = listThongBao.get(i).getNgay();
-//            String ten = listThongBao.get(i).getTenTruyen();
-//            if (thoiGian.equalsIgnoreCase(getNow())) {
-
-//            }
-        //}
-
         if (manggiohang != null) {
 
         } else {
@@ -135,24 +126,6 @@ public class MainActivity extends AppCompatActivity implements OnClickItemDish {
         viewPager.setAdapter(viewPagerAdapter);
     }
 
-    //    public void startNoti(){
-//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher);
-//        Notification notification = new NotificationCompat.Builder(this,MyApplication.CHANNEL_ID)
-//                .setContentTitle("Đơn hàng mới")
-//                .setContentText("Vừa được cập nhật")
-//                .setSmallIcon(R.drawable.alerticon)
-//                .setLargeIcon(bitmap)
-//                .build();
-//        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        if (notificationManager !=null){
-//            notificationManager.notify(getNotificationId(),notification);
-//        }
-//
-//
-//    }
-//    private int getNotificationId(){
-//        return (int) new Date().getTime();
-//    }
     public void startServices(String ten) {
         String name = ten + " Thơm ngon mời bạn ăn nha";
         Intent intent = new Intent(this, MyService.class);
@@ -170,15 +143,6 @@ public class MainActivity extends AppCompatActivity implements OnClickItemDish {
     }
 
     public void replaceFragment() {
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        ViewDetailFragment viewDetailFragment = new ViewDetailFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("obj_dish", dish);
-//        viewDetailFragment.setArguments(bundle);
-//        transaction.replace(R.id.flContent, viewDetailFragment)
-//                .addToBackStack(null);
-//        transaction.commit();
-        //dishFragment.setOnClickItemDish(viewDetailFragment.getOnClickItemDish());
         viewPager.setCurrentItem(5);
     }
 

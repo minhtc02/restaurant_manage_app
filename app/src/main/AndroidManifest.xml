@@ -43,7 +43,7 @@
             android:name=".Activity.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.login_activity"
+            android:name=".Activity.Login_Activity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"

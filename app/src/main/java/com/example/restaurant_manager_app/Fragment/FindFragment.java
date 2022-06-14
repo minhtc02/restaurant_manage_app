@@ -43,6 +43,7 @@ public class FindFragment extends Fragment implements FindData {
     CartDAO dao;
     ImageView imgFind;
     EditText edName;
+    String tableName = "findDataDish.php";
 
     public FindFragment() {
     }
@@ -85,7 +86,7 @@ public class FindFragment extends Fragment implements FindData {
     }
     public void findDish(){
         String name = "'"+edName.getText().toString()+"'";
-        new ApiFindData(name,this).execute();
+        new ApiFindData(tableName,name,this).execute();
         updateView();
     }
 

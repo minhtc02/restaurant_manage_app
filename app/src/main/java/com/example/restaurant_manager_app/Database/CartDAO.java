@@ -77,12 +77,6 @@ public class CartDAO {
         return String.valueOf(a);
     }
 
-    public void resetCart() {
-        String sql = "DELETE FROM Cart";
-        Cursor c = db.rawQuery(sql, null);
-
-    }
-
 
     @SuppressLint("Range")
     private ArrayList<Dish> getData(String sql, String... selectionArgs) {
@@ -110,7 +104,7 @@ public class CartDAO {
         }
         return check;
     }
-    public int checkExistsManga(String id) {
+    public int checkExistsCart(String id) {
         int check = 1;
         String getMG = "SELECT * FROM Cart WHERE name=" + "'"+id+"'" ;
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getMG, null);

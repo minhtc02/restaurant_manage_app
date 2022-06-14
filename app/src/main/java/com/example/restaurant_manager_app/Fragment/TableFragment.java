@@ -81,7 +81,7 @@ public class TableFragment extends Fragment implements GetData {
                 builder.setCancelable(true);
                 builder.setPositiveButton("Đúng", (dialog, which) -> {
                     String ids = dish.getId();
-                    if (dao.checkExistsManga(ids) > 0){
+                    if (dao.checkExistsCart(ids) > 0){
                         dao.insert(dish);
                         Toast.makeText(getActivity(), "Đặt bàn thành công", Toast.LENGTH_SHORT).show();
                     }
@@ -101,7 +101,6 @@ public class TableFragment extends Fragment implements GetData {
                         dialog.cancel();
                     }
                 });
-                AlertDialog alert  = builder.create();
                 builder.show();
             }
 
