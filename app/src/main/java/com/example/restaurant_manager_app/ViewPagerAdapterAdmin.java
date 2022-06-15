@@ -6,18 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.restaurant_manager_app.Fragment.AccountFragment;
 import com.example.restaurant_manager_app.Fragment.AddDishFragment;
 import com.example.restaurant_manager_app.Fragment.AddTableFragment;
-import com.example.restaurant_manager_app.Fragment.CartFragment;
 import com.example.restaurant_manager_app.Fragment.DeleteDishFragment;
 import com.example.restaurant_manager_app.Fragment.DeleteTableFragment;
-import com.example.restaurant_manager_app.Fragment.DishFragment;
-import com.example.restaurant_manager_app.Fragment.OrderFragment;
-import com.example.restaurant_manager_app.Fragment.TableFragment;
 import com.example.restaurant_manager_app.Fragment.UpdateDishFragment;
 import com.example.restaurant_manager_app.Fragment.UpdateTableFragment;
-import com.example.restaurant_manager_app.Fragment.ViewDetailFragment;
 
 public class ViewPagerAdapterAdmin extends FragmentStatePagerAdapter {
     public ViewPagerAdapterAdmin(@NonNull FragmentManager fm, int behavior) {

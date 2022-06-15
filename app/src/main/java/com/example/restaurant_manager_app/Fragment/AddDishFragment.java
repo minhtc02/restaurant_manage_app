@@ -32,11 +32,8 @@ public class AddDishFragment extends Fragment implements RunSql {
 
         view =  inflater.inflate(R.layout.fragment_add_dish, container, false);
 
-
-
         init();
         mapping();
-
         updateView();
         setClick();
         return view;

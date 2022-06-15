@@ -114,7 +114,7 @@ public class FindFragment extends Fragment implements FindData {
 
     @Override
     public void start() {
-        Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
     }
 
     @Override

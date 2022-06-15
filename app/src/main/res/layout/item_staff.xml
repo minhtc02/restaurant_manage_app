@@ -4,35 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đồ ăn #"
-            android:textColor="@color/black"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/tvId"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="1"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:text="26/04/20222"
-            android:textSize="18dp" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,27 +21,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="20dp">
+            android:paddingLeft="10dp">
 
             <TextView
                 android:id="@+id/tvDishes"
                 android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
-                android:text="Tên Món"
+                android:text="Nguyễn Văn Staff"
                 android:textColor="@color/black"
                 android:textSize="18dp"></TextView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Minh"
                     android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tvPhoneNum"
                     android:layout_width="wrap_content"
@@ -79,76 +52,76 @@
                     android:text="012345678"
                     android:textSize="18dp" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="minh@gmail.com"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <TextView
-                    android:id="@+id/tvBill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="50000"
+                    android:text="Tên đăng nhập: "
                     android:textColor="@color/black"
                     android:textSize="18dp" />
+
                 <TextView
+                    android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:text="đ - Tiền mặt"
-                    android:textColor="@color/black"
+                    android:text="username"
+                    android:textColor="#00C62B"
                     android:textSize="18dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tình trạng: "
+                    android:text="Mật khẩu: "
                     android:textColor="@color/black"
                     android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:text="Đang tiến hành"
+                    android:text="password"
                     android:textColor="#00C62B"
                     android:textSize="18dp" />
             </LinearLayout>
-            <FrameLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
+                android:orientation="horizontal">
+
                 <Button
-                    android:id="@+id/btnHelp"
-                    android:layout_width="match_parent"
+                    android:id="@+id/btnDelete"
+                    android:layout_width="125dp"
                     android:layout_height="50dp"
-                    android:visibility="invisible"
-                    android:text="Hỗ trợ" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <Button
-                        android:id="@+id/btnDelete"
-                        android:layout_width="125dp"
-                        android:layout_height="50dp"
-                        android:text="Xóa" />
-                    <Button
-                        android:id="@+id/btnAccept"
-                        android:layout_width="125dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
-                        android:text="Nhận đơn" />
-                </LinearLayout>
-            </FrameLayout>
+                    android:text="Xóa" />
 
-
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Sửa" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

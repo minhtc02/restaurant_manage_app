@@ -47,12 +47,9 @@ public class Login_Activity extends AppCompatActivity implements FindData {
 
         });
         btn_login.setOnClickListener(v -> {
-
-            //Toast.makeText(this, "Failed" + account.getPermission() + account.getUsername() + account.getPassword(), Toast.LENGTH_SHORT).show();
-
-            if (ed_user.getText().toString().trim() == "" || ed_pass.getText().toString().trim() == "") {
+            if (account==null){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Bạn phải điền đầy đủ tài khoản và mật khẩu !!!");
+                builder.setMessage("Không tìm thấy tài khoản, vui lòng thử lại");
                 builder.setCancelable(true);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -61,27 +58,46 @@ public class Login_Activity extends AppCompatActivity implements FindData {
                     }
                 });
                 builder.show();
-            } else if (ed_pass.getText().toString().trim().equals(account.getPassword().trim())) {
-                //tai khoan admin
-                //mat khau passwordAdmin
-                Log.d("TAG", "onCreate: " + account.getUsername() + account.getPassword() + account.getPermission());
-                dao.insert(account);
-                if (account.getPermission().equals("admin")) {
-                    startActivity(new Intent(this, Main_Admin.class));
+            }
+            else {
+                if (ed_user.getText().toString().trim() == "" || ed_pass.getText().toString().trim() == "") {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("Bạn phải điền đầy đủ tài khoản và mật khẩu !!!");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
+                } else if (ed_pass.getText().toString().trim().equals(account.getPassword().trim())) {
+                    //tai khoan admin
+                    //mat khau passwordAdmin
+                    Log.d("TAG", "onCreate: " + account.getUsername() + account.getPassword() + account.getPermission());
+                    dao.insert(account);
+                    if (account.getPermission().equals("admin")) {
+                        startActivity(new Intent(this, Main_Admin.class));
+                    }else if (account.getPermission().equals("staff")) {
+                        startActivity(new Intent(this, Main_Admin.class));
+                    }
+                    else {
+                        startActivity(new Intent(this, MainActivity.class));
+                    }
+
+                } else {
+                    Log.d("TAG", "onCreate: " + account.getUsername() + " " + account.getPassword());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("Thông tin đăng nhập sai !!!");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
                 }
-
-            } else {
-                Log.d("TAG", "onCreate: " + account.getUsername() + " " + account.getPassword());
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Thông tin đăng nhập sai !!!");
-                builder.setCancelable(true);
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
             }
 
         });

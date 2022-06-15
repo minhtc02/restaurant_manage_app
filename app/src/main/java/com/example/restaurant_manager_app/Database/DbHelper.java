@@ -9,7 +9,7 @@ public class DbHelper extends SQLiteOpenHelper {
     final String createTableCart =
             "create table Cart (id TEXT  PRIMARY KEY, name TEXT , describe TEXT, vote TEXT, price INTEGER, image TEXT)";
     final String createTableAccount =
-            "create table Cart (id TEXT  PRIMARY KEY, name TEXT , describe TEXT, vote TEXT, price INTEGER, image TEXT)";
+            "create table Account (id TEXT  PRIMARY KEY, permission TEXT , username TEXT, password TEXT, name TEXT,phoneNum TEXT, email TEXT, image TEXT)";
 
     final String dropTableCart = "drop table if exists Cart";
     final String dropTableAccount = "drop table if exists Account";
@@ -20,8 +20,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(createTableCart);
         db.execSQL(createTableAccount);
+        db.execSQL(createTableCart);
     }
 
     @Override

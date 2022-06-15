@@ -19,7 +19,7 @@ import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
-public class Deltai_activity extends AppCompatActivity {
+public class Detail_Activity extends AppCompatActivity {
     TextView tvName, tvDescribe, tvVote, tvPrice;
     ImageView imgDish;
     Button btnAdd, btnBack;

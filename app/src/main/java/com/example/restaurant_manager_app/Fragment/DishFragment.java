@@ -17,9 +17,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Adapter.DishAdapter;
 import com.example.restaurant_manager_app.Api.ApiGetData;
+import com.example.restaurant_manager_app.Api.ApiRunSql;
 import com.example.restaurant_manager_app.Database.CartDAO;
 import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Interface.OnClickItemDish;
+import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
@@ -30,7 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class DishFragment extends Fragment implements GetData {
+public class DishFragment extends Fragment implements GetData, RunSql {
     ListView listView;
     DishAdapter adapter;
     ArrayList<Dish> list;
@@ -59,6 +61,7 @@ public class DishFragment extends Fragment implements GetData {
         init();
         mapping();
         new ApiGetData(tableName, this).execute();
+        new ApiRunSql(tableName,this).execute();
         updateView();
         mySwipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
@@ -88,25 +91,18 @@ public class DishFragment extends Fragment implements GetData {
         mySwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
     }
 
-
-    public void setClick(Dish dish) {
-        mMainActivity.replaceFragment();
-    }
-
     public void addToCart(final Dish dish) {
-        dao.insert(dish);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Đã thêm vào giỏ hàng");
-        builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        AlertDialog alert = builder.create();
-        builder.show();
+//        dao.insert(dish);
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//        builder.setMessage("Đã thêm vào giỏ hàng");
+//        builder.setCancelable(true);
+//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
+//        builder.show();
     }
 
     private void updateView() {
@@ -117,7 +113,12 @@ public class DishFragment extends Fragment implements GetData {
 
     @Override
     public void start() {
-        Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void finish() {
+
     }
 
     @Override

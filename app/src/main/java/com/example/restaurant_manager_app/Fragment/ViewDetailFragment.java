@@ -62,15 +62,4 @@ public class ViewDetailFragment extends Fragment {
 
     public ViewDetailFragment() {
     }
-    //    @Override
-//    public void onClickItem(Dish dish) {
-//        tvName.setText(dish.getName());
-//        tvVote.setText(dish.getVote());
-//        tvPrice.setText(dish.getPrice());
-//        tvDescribe.setText(dish.getDescribe());
-//        Glide.with(requireContext()).load(dish.getImage()).into(imgDish);
-//    }
-//    public OnClickItemDish getOnClickItemDish() {
-//        return onClickItemDish;
-//    }
 }

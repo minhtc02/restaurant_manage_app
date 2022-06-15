@@ -14,10 +14,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import com.example.restaurant_manager_app.Activity.Deltai_activity;
-import com.example.restaurant_manager_app.Fragment.DishFragment;
+import com.example.restaurant_manager_app.Activity.Detail_Activity;
 import com.example.restaurant_manager_app.Fragment.FindFragment;
-import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
@@ -61,7 +59,7 @@ public class FindAdapter extends ArrayAdapter<Dish> implements Filterable {
                 fragment.addToCart(dish);
             });
             imgDish.setOnClickListener(v -> {
-                Intent intent = new Intent(getContext(), Deltai_activity.class);
+                Intent intent = new Intent(getContext(), Detail_Activity.class);
                 intent.putExtra("deltais", mListDish.get(position));
                 getContext().startActivity(intent);
             });

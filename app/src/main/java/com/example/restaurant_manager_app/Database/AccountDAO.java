@@ -7,10 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.restaurant_manager_app.Model.Account;
-import com.example.restaurant_manager_app.Model.Dish;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AccountDAO {
     private final SQLiteDatabase db;
@@ -39,23 +35,24 @@ public class AccountDAO {
     public void delete(String id) {
         db.delete("Account", "id=?", new String[]{id});
     }
+
     //delete
     public void resetA() {
         db.delete("Account", "", null);
     }
 
     // get tat ca data
-    public ArrayList<Account> getAll() {
+    public Account getAll() {
         String sql = "SELECT * FROM Account";
         return getData(sql);
     }
-
+    Account obj;
     @SuppressLint("Range")
-    private ArrayList<Account> getData(String sql, String... selectionArgs) {
-        ArrayList<Account> list = new ArrayList<>();
-        @SuppressLint("Recycle") Cursor c = db.rawQuery(sql, selectionArgs);
+    private Account getData(String sql, String... selectionArgs) {
+        Cursor c = db.rawQuery(sql, selectionArgs);
+
         while (c.moveToNext()) {
-            Account obj = new Account();
+            obj =new Account();
             obj.setId(c.getString(c.getColumnIndex("id")));
             obj.setPermission(c.getString(c.getColumnIndex("permission")));
             obj.setUsername(c.getString(c.getColumnIndex("username")));
@@ -64,9 +61,8 @@ public class AccountDAO {
             obj.setPhoneNum(c.getString(c.getColumnIndex("phoneNum")));
             obj.setEmail(c.getString(c.getColumnIndex("email")));
             obj.setImage(c.getString(c.getColumnIndex("image")));
-            list.add(obj);
         }
-        return list;
+        return obj;
     }
 
     public int checkExist() {
@@ -78,9 +74,10 @@ public class AccountDAO {
         }
         return check;
     }
+
     public int checkExistsCart(String id) {
         int check = 1;
-        String getMG = "SELECT * FROM Account WHERE name=" + "'"+id+"'" ;
+        String getMG = "SELECT * FROM Account WHERE name=" + "'" + id + "'";
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getMG, null);
         if (cursor.getCount() != 0) {
             check = -1;

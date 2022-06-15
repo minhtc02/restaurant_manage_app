@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:src="@drawable/table_img"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:src="@drawable/table_img" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -19,36 +20,78 @@
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tên Bàn"
             android:paddingTop="8dp"
+            android:text="Tên Bàn"
             android:textSize="18dp"></TextView>
+
         <TextView
             android:id="@+id/tvFloor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tầng"
             android:paddingTop="8dp"
+            android:text="Tầng"
             android:textSize="18dp"></TextView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tình Trạng: "
                 android:paddingTop="8dp"
+                android:text="Tình Trạng: "
                 android:textSize="18dp"></TextView>
+
             <TextView
                 android:id="@+id/tvStatus"
-                android:paddingTop="8dp"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:paddingTop="8dp"
                 android:text="Trống"
                 android:textSize="18dp"></TextView>
         </LinearLayout>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btnOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trống"
+            android:backgroundTint="@color/green"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã Đặt"
+            android:backgroundTint="@color/red"
+            android:visibility="visible"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="38dp"
+            android:text="Xóa" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="78dp"
+            android:text="Sửa" />
+
+
+    </FrameLayout>
+
 </LinearLayout>

@@ -102,10 +102,7 @@ public class OrderFragment extends Fragment implements GetData {
                 dialog.cancel();
             }
         });
-
-        AlertDialog alert = builder.create();
         builder.show();
-        Toast.makeText(getActivity(),"Comming soon",Toast.LENGTH_SHORT).show();
     }
 
     private void updateView() {
@@ -116,7 +113,7 @@ public class OrderFragment extends Fragment implements GetData {
 
     @Override
     public void start() {
-        Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
     }
 
     @Override
