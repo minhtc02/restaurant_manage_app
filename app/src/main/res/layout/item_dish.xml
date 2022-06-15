@@ -61,7 +61,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="invisible"
             >
             <Button
                 android:id="@+id/btnDelete"
@@ -69,11 +68,11 @@
                 android:layout_height="50dp"
                 android:text="Xóa" />
             <Button
-                android:id="@+id/btnAccept"
+                android:id="@+id/btnUpdate"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:text="Nhận đơn" />
+                android:text="Sửa" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

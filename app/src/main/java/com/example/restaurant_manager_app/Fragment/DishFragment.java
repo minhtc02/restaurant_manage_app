@@ -1,12 +1,15 @@
 package com.example.restaurant_manager_app.Fragment;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.Model.Dish;
+import com.example.restaurant_manager_app.Model.Order;
 import com.example.restaurant_manager_app.R;
 
 import org.json.JSONArray;
@@ -41,6 +45,10 @@ public class DishFragment extends Fragment implements GetData, RunSql {
     String tableName = "getDataDish.php";
     CartDAO dao;
     SwipeRefreshLayout mySwipeRefreshLayout;
+    Dialog dialog;
+    EditText edId, edName, edDescribe, edVote, edPrice, edImage;
+    Button btnSave, btnCancel;
+    Dish item;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -61,7 +69,6 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         init();
         mapping();
         new ApiGetData(tableName, this).execute();
-        new ApiRunSql(tableName,this).execute();
         updateView();
         mySwipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
@@ -92,17 +99,88 @@ public class DishFragment extends Fragment implements GetData, RunSql {
     }
 
     public void addToCart(final Dish dish) {
-//        dao.insert(dish);
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//        builder.setMessage("Đã thêm vào giỏ hàng");
-//        builder.setCancelable(true);
-//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.cancel();
-//            }
-//        });
-//        builder.show();
+        dao.insert(dish);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Đã thêm vào giỏ hàng");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+    public void deleteR(String id) {
+        String sql = "DELETE FROM `dish` WHERE `dish`.`id` = " +
+                "" +
+                id + "";
+        new ApiRunSql(sql, this).execute();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Đã xóa");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                myUpdateOperation();
+            }
+        });
+        builder.show();
+    }
+    public void updateR(Dish dish) {
+        item = dish;
+        openDialog(getActivity());
+    }
+
+    protected void openDialog(final Context context) {
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_dish);
+        edId = dialog.findViewById(R.id.edID);
+        edName = dialog.findViewById(R.id.edName);
+        edDescribe = dialog.findViewById(R.id.edDescribe);
+        edVote = dialog.findViewById(R.id.edVote);
+        edPrice = dialog.findViewById(R.id.edPrice);
+        edImage = dialog.findViewById(R.id.edImage);
+        btnCancel = dialog.findViewById(R.id.btnCancel);
+        btnSave = dialog.findViewById(R.id.btnSave);
+        edId.setEnabled(false);
+        edId.setText(item.getId());
+        edName.setText(item.getName());
+        edDescribe.setText(item.getDescribe());
+        edVote.setText(item.getVote());
+        edPrice.setText(item.getPrice());
+        edImage.setText(item.getImage());
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnSave.setOnClickListener(v -> {
+            String id = edId.getText().toString();
+            String name = edName.getText().toString();
+            String describe = edDescribe.getText().toString();
+            String vote = edVote.getText().toString();
+            String price = edPrice.getText().toString();
+            String image = edImage.getText().toString();
+            String sql = "UPDATE `dish` SET `name` = '" +
+                    name+
+                    "', `describes` = '" +
+                    describe+
+                    "', `vote` = '" +
+                    vote+
+                    "', `price` = '" +
+                    price+
+                    "', `image` = '" +
+                    image+
+                    "' WHERE `dish`.`id` = " +
+                    id+"";
+            new ApiRunSql(sql, this).execute();
+            dialog.dismiss();
+        });
+        dialog.show();
     }
 
     private void updateView() {

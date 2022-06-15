@@ -1,5 +1,7 @@
 package com.example.restaurant_manager_app.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -64,7 +66,7 @@ public class AddTableFragment extends Fragment implements RunSql {
         String name = edName.getText().toString();
         String floor =  edFloor.getText().toString();
         String status = edStatus.getText().toString();
-        String sql = "INSERT INTO `dish` (`id`, `name`, `floor`, `status`) VALUES (NULL, '" +
+        String sql = "INSERT INTO `tables` (`id`, `name`, `floor`, `status`) VALUES (NULL, '" +
                 name+
                 "', '" +
                 floor+
@@ -77,12 +79,22 @@ public class AddTableFragment extends Fragment implements RunSql {
 
     @Override
     public void start() {
-        Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void finish() {
-        Toast.makeText(getActivity(), "Successful", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Successful", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Hoàn thành");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 
     @Override

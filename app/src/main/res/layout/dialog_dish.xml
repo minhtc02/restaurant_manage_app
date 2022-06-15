@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="350dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context=".Fragment.UpdateTableFragment">
-
+    >
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Sửa thông tin bàn"
+        android:text="Sửa thông tin món ăn"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:layout_gravity="center"/>
@@ -21,38 +20,56 @@
         android:id="@+id/edID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập ID bàn"
+        android:hint="ID"
         android:layout_marginTop="30dp"
         />
     <EditText
         android:id="@+id/edName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập tên mới bàn"
+        android:hint="Tên món ăn"
         android:layout_marginTop="30dp"
         />
     <EditText
-        android:id="@+id/edFloor"
+        android:id="@+id/edDescribe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tầng"
+        android:hint="Mô tả"
         android:layout_marginTop="15dp"
         />
     <EditText
-        android:id="@+id/edStatus"
+        android:id="@+id/edVote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tình trạng"
+        android:hint="Đánh giá"
         android:layout_marginTop="15dp"
         />
+    <EditText
+        android:id="@+id/edPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá tiền"
+        android:layout_marginTop="15dp"
+        />
+    <EditText
+        android:id="@+id/edImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ảnh minh họa"
+        android:layout_marginTop="15dp"
+        />
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Lưu" />
 
     <Button
-        android:id="@+id/btnUpdate"
+        android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sửa"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        />
+        android:text="Hủy" />
+
 
 </LinearLayout>

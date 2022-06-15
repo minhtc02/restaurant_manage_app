@@ -1,5 +1,7 @@
 package com.example.restaurant_manager_app.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +17,6 @@ import android.widget.Toast;
 import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Api.ApiRunSql;
 import com.example.restaurant_manager_app.Interface.RunSql;
-import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
 public class AddStaffFragment extends Fragment implements RunSql {
@@ -71,12 +72,12 @@ public class AddStaffFragment extends Fragment implements RunSql {
         String phoneNum= edPhoneNum.getText().toString();
         String email = edEmail.getText().toString();
         String image = edImage.getText().toString();
-        String sql = "INSERT INTO `dish` (`id`, `name`, `username`, `password`, `phoneNum`,`email`, `image`) VALUES (NULL, '" +
-                name+
-                "', '" +
+        String sql = "INSERT INTO `account` (`id`, `permission`, `username`, `password`, `name`, `phoneNum`,`email`, `image`) VALUES (NULL, 'staff', '" +
                 username+
                 "', '" +
                 password+
+                "', '" +
+                name+
                 "', '" +
                 phoneNum+
                 "', '" +
@@ -91,12 +92,22 @@ public class AddStaffFragment extends Fragment implements RunSql {
 
     @Override
     public void start() {
-        Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void finish() {
-        Toast.makeText(getActivity(), "Successful", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Successful", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Hoàn thành");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 
     @Override

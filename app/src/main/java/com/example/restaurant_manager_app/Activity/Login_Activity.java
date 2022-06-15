@@ -77,9 +77,9 @@ public class Login_Activity extends AppCompatActivity implements FindData {
                     Log.d("TAG", "onCreate: " + account.getUsername() + account.getPassword() + account.getPermission());
                     dao.insert(account);
                     if (account.getPermission().equals("admin")) {
-                        startActivity(new Intent(this, Main_Admin.class));
+                        startActivity(new Intent(this, MainActivity.class));
                     }else if (account.getPermission().equals("staff")) {
-                        startActivity(new Intent(this, Main_Admin.class));
+                        startActivity(new Intent(this, MainActivity.class));
                     }
                     else {
                         startActivity(new Intent(this, MainActivity.class));

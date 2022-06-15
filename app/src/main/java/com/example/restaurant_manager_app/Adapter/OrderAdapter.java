@@ -11,11 +11,9 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
+import com.example.restaurant_manager_app.Database.AccountDAO;
 import com.example.restaurant_manager_app.Fragment.OrderFragment;
-import com.example.restaurant_manager_app.Interface.OnClickItemDish;
-import com.example.restaurant_manager_app.Model.Dish;
+import com.example.restaurant_manager_app.Model.Account;
 import com.example.restaurant_manager_app.Model.Order;
 import com.example.restaurant_manager_app.R;
 
@@ -25,12 +23,14 @@ public class OrderAdapter extends ArrayAdapter<Order> implements Filterable {
     private final Context context;
     private final ArrayList<Order> mListOrder;
     OrderFragment fragment;
+    AccountDAO dao;
+    Account account;
 
     public OrderAdapter(Context context, OrderFragment fragment, ArrayList<Order> mListOrder) {
         super(context, 0, mListOrder);
         this.context = context;
         this.mListOrder = mListOrder;
-        this.fragment  = fragment;
+        this.fragment = fragment;
     }
 
 
@@ -53,6 +53,8 @@ public class OrderAdapter extends ArrayAdapter<Order> implements Filterable {
             TextView tvType = convertView.findViewById(R.id.tvType);
             ImageView imgDish = convertView.findViewById(R.id.imgDish);
             Button btnHelp = convertView.findViewById(R.id.btnHelp);
+            Button btnDelete = convertView.findViewById(R.id.btnDelete);
+            Button btnAcept = convertView.findViewById(R.id.btnAccept);
 
             tvId.setText(order.getId());
             tvName.setText(order.getName());
@@ -61,13 +63,34 @@ public class OrderAdapter extends ArrayAdapter<Order> implements Filterable {
             tvTime.setText(order.getTime());
             tvBill.setText(order.getBill());
             tvStatus.setText(order.getStatus());
-            if (order.getDishes().contains("bàn")){
+            if (order.getDishes().contains("bàn")) {
                 tvType.setText("Đồ ăn/ Bàn #");
                 imgDish.setImageResource(R.drawable.table_img);
             }
-            btnHelp.setOnClickListener(v -> {
-                fragment.helper();
-            });
+            btnHelp.setOnClickListener(v -> fragment.helper());
+            btnDelete.setOnClickListener(v -> fragment.deleteR(order.getId()));
+            btnAcept.setOnClickListener(v -> fragment.accept(order));
+
+            dao = new AccountDAO(getContext());
+            account = dao.getAll();
+            if (account == null) {
+                btnHelp.setVisibility(View.VISIBLE);
+                btnDelete.setVisibility(View.INVISIBLE);
+                btnAcept.setVisibility(View.INVISIBLE);
+            } else {
+                if (account.getPermission().equals("admin")) {
+                    btnDelete.setVisibility(View.VISIBLE);
+                    btnAcept.setVisibility(View.VISIBLE);
+                } else if (account.getPermission().equals("staff")) {
+                    btnDelete.setVisibility(View.VISIBLE);
+                    btnAcept.setVisibility(View.VISIBLE);
+                } else {
+                    btnHelp.setVisibility(View.VISIBLE);
+                    btnDelete.setVisibility(View.INVISIBLE);
+                    btnAcept.setVisibility(View.INVISIBLE);
+                }
+
+            }
 
 
         }

@@ -17,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bumptech.glide.Glide;
 import com.example.restaurant_manager_app.Activity.Login_Activity;
 import com.example.restaurant_manager_app.Activity.MainActivity;
+import com.example.restaurant_manager_app.Activity.Register_Activity;
 import com.example.restaurant_manager_app.Database.AccountDAO;
 import com.example.restaurant_manager_app.Model.Account;
 import com.example.restaurant_manager_app.R;
@@ -26,7 +27,7 @@ public class UserFragment extends Fragment {
     AccountDAO dao;
     Button btnLogIn, btnRegister, btnLogOut;
     TextView tvName, tvPhoneNum, tvEmail;
-    ImageView imgImage, btnDish, btnTable, btnCart, btnOrder, btnHelp,btnSetting;
+    ImageView imgImage, btnDish, btnTable, btnCart, btnOrder, btnHelp, btnSetting;
     View view;
     MainActivity mainActivity;
     SwipeRefreshLayout mySwipeRefreshLayout;
@@ -91,7 +92,7 @@ public class UserFragment extends Fragment {
 
             dao.resetA();
 
-            startActivity(new Intent(getContext(), Login_Activity.class));
+            startActivity(new Intent(getContext(), Register_Activity.class));
         });
 
         btnLogOut.setOnClickListener(v -> {
@@ -139,19 +140,40 @@ public class UserFragment extends Fragment {
 
     private void setUp() {
         account = new Account();
-        if (dao.checkExist() < 0) {
-            account = dao.getAll();
-            tvName.setText(account.getName());
-            tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
-            tvEmail.setText(account.getEmail());
-            Glide.with(getContext()).load(account.getImage()).into(imgImage);
-        } else {
+        account = dao.getAll();
+        if (account == null) {
             tvName.setText("Tên khách hàng");
             tvPhoneNum.setText("SĐT: XXX XXX XXXX");
             tvEmail.setText("user@gmail.com");
             imgImage.setImageResource(R.drawable.img_ganuong);
+            btnSetting.setVisibility(View.INVISIBLE);
+        } else {
+            if (account.getPermission().equals("admin")) {
+                tvName.setText(account.getName());
+                tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
+                tvEmail.setText(account.getEmail());
+                Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                btnSetting.setVisibility(View.VISIBLE);
+            } else if (account.getPermission().equals("staff")) {
+                tvName.setText(account.getName());
+                tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
+                tvEmail.setText(account.getEmail());
+                Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                btnSetting.setVisibility(View.INVISIBLE);
+            } else if (account.getPermission().equals("customer")) {
+                tvName.setText(account.getName());
+                tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
+                tvEmail.setText(account.getEmail());
+                Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                btnSetting.setVisibility(View.INVISIBLE);
+            } else {
+                tvName.setText("Tên khách hàng");
+                tvPhoneNum.setText("SĐT: XXX XXX XXXX");
+                tvEmail.setText("user@gmail.com");
+                imgImage.setImageResource(R.drawable.img_ganuong);
+                btnSetting.setVisibility(View.INVISIBLE);
+            }
         }
-
     }
 
 

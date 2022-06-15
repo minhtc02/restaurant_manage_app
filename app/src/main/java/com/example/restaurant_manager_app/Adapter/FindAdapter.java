@@ -15,7 +15,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import com.example.restaurant_manager_app.Activity.Detail_Activity;
+import com.example.restaurant_manager_app.Database.AccountDAO;
 import com.example.restaurant_manager_app.Fragment.FindFragment;
+import com.example.restaurant_manager_app.Model.Account;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
@@ -25,6 +27,8 @@ public class FindAdapter extends ArrayAdapter<Dish> implements Filterable {
     private final Context context;
     private final ArrayList<Dish> mListDish;
     FindFragment fragment;
+    AccountDAO dao;
+    Account account;
 
 
     public FindAdapter(Context context, FindFragment fragment, ArrayList<Dish> mListDish) {
@@ -49,6 +53,8 @@ public class FindAdapter extends ArrayAdapter<Dish> implements Filterable {
             TextView tvPrice = convertView.findViewById(R.id.tvPrice);
             ImageView imgDish = convertView.findViewById(R.id.imgDish);
             Button btnAddToCart = convertView.findViewById(R.id.btnAddToCart);
+            Button btnDelete = convertView.findViewById(R.id.btnDelete);
+            Button btnUpdate = convertView.findViewById(R.id.btnUpdate);
 
             tvName.setText(dish.getName());
             tvVote.setText(dish.getVote());
@@ -63,6 +69,24 @@ public class FindAdapter extends ArrayAdapter<Dish> implements Filterable {
                 intent.putExtra("deltais", mListDish.get(position));
                 getContext().startActivity(intent);
             });
+            dao = new AccountDAO(getContext());
+            account = dao.getAll();
+            if (account == null) {
+                btnDelete.setVisibility(View.INVISIBLE);
+                btnUpdate.setVisibility(View.INVISIBLE);
+            } else {
+                if (account.getPermission().equals("admin")) {
+                    btnDelete.setVisibility(View.VISIBLE);
+                    btnUpdate.setVisibility(View.VISIBLE);
+                } else if (account.getPermission().equals("staff")) {
+                    btnDelete.setVisibility(View.INVISIBLE);
+                    btnUpdate.setVisibility(View.INVISIBLE);
+                } else {
+                    btnDelete.setVisibility(View.INVISIBLE);
+                    btnUpdate.setVisibility(View.INVISIBLE);
+                }
+
+            }
         }
 
         return convertView;
