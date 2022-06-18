@@ -25,10 +25,9 @@ public class AddDishFragment extends Fragment implements RunSql {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     View view;
-    MainActivity mMainActivity;
+    MainActivity mainActivity;
     EditText edName,edDescribe,edVote,edPrice,edImage;
     Button btnAdd, btn_back;
-    MainActivity mainActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
