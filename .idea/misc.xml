@@ -3,8 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_check_internet.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_gio_hang.xml" value="0.264945652173913" />
         <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_main.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_main_admin.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_notification.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_register.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_splash.xml" value="0.264945652173913" />
         <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/activity_user.xml" value="0.12239583333333333" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/dialog_dish.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/dialog_order.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/fragment_add_dish.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/fragment_add_table.xml" value="0.264945652173913" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/fragment_view_staff.xml" value="0.22826086956521738" />
+        <entry key="..\:/Du_anCaNhan/restaurant_manage_app/app/src/main/res/layout/item_order.xml" value="0.264945652173913" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/restaurant_manage_app/app/src/main/res/layout/activity_notification.xml" value="0.25" />
