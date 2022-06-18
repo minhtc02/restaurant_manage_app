@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
@@ -60,7 +61,7 @@ public class DishFragment extends Fragment implements GetData, RunSql {
     Dialog dialog;
     EditText edId, edName, edDescribe, edVote, edPrice, edImage;
     Button btnSave, btnCancel, btn_choseimg;
-    ImageView img_item;
+    ImageView img_item, imgback1;
     Dish item;
 
     @Override
@@ -91,7 +92,14 @@ public class DishFragment extends Fragment implements GetData, RunSql {
                     }
                 }
         );
+        imgback1 = view.findViewById(R.id.imgback1);
+
         return view;
+        imgback1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
     }
 
 
