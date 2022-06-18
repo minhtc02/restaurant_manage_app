@@ -55,7 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Xóa"
-            android:id="@+id/btnDelete"/>-
+            android:id="@+id/btnDelete"
+            android:backgroundTint="#FF4D00"/>-
 
 
 

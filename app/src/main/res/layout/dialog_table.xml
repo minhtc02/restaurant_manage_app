@@ -49,13 +49,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Lưu" />
+        android:text="Lưu"
+        android:backgroundTint="#FF4D00"/>
 
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hủy" />
+        android:text="Hủy"
+        android:backgroundTint="#FF4D00"/>
 
 
 </LinearLayout>

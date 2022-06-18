@@ -2,6 +2,7 @@ package com.example.restaurant_manager_app.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity   {
     private static final int NOTIFICATION_ID = 1;
     private BottomNavigationView navigationView;
     private ViewPager viewPager;
-    ImageView imgBell, imgCart;
+    ImageView imgBell, imgCart, imgBack;
     TextView edFind;
     SimpleDateFormat sdf = new SimpleDateFormat("dd");
     private NotificationManagerCompat notificationManagerCompat;
@@ -40,7 +41,14 @@ public class MainActivity extends AppCompatActivity   {
         viewPager = findViewById(R.id.view_pager);
         imgBell = findViewById(R.id.imgBell);
         imgCart = findViewById(R.id.imgCart);
+        imgBack = findViewById(R.id.imgback);
         edFind = findViewById(R.id.edFind);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         this.notificationManagerCompat = NotificationManagerCompat.from(this);
         String name = "Gà nướng muối ớt";
         dao = new CartDAO(this);

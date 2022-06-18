@@ -26,7 +26,7 @@ public class AddTableFragment extends Fragment implements RunSql {
     View view;
     MainActivity mMainActivity;
     EditText edName,edFloor,edStatus;
-    Button btnAdd;
+    Button btnAdd, btnBack;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class AddTableFragment extends Fragment implements RunSql {
         return view;
     }
     private void init() {
-
+        mMainActivity = (MainActivity) getActivity();
 
     }
 
@@ -52,12 +52,22 @@ public class AddTableFragment extends Fragment implements RunSql {
         edFloor = view.findViewById(R.id.edFloor);
         edStatus  = view.findViewById(R.id.edStatus);
         btnAdd = view.findViewById(R.id.btnAdd);
+        btnBack = view.findViewById(R.id.btn_back3);
     }
 
     private void setClick() {
         btnAdd.setOnClickListener(v -> {
             add();
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
+    }
+    private void back(){
+        mMainActivity.replaceFragmentSetting();
     }
 
     private void updateView() {

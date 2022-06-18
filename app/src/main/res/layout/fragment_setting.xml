@@ -9,26 +9,30 @@
     <Button
         android:id="@+id/btnAddStaff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:text="Thêm nhân viên"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FF4D00"/>
     <Button
         android:id="@+id/btnViewStaff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:text="Danh sách nhân viên"
+        android:backgroundTint="#FF4D00"
        />
     <Button
         android:id="@+id/btnAddDish"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:text="Thêm món ăn"
+        android:backgroundTint="#FF4D00"
         />
     <Button
         android:id="@+id/btnAddTable"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:text="Thêm bàn"
+        android:backgroundTint="#FF4D00"
         />
 
 
