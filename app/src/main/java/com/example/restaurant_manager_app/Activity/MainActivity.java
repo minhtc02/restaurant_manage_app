@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity   {
         viewPager = findViewById(R.id.view_pager);
         imgBell = findViewById(R.id.imgBell);
         imgCart = findViewById(R.id.imgCart);
-//        imgBack = findViewById(R.id.imgback);
+        imgBack = findViewById(R.id.imgback);
         edFind = findViewById(R.id.edFind);
-//        imgBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         this.notificationManagerCompat = NotificationManagerCompat.from(this);
         String name = "Gà nướng muối ớt";
         dao = new CartDAO(this);
