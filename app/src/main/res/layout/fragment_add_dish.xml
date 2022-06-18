@@ -71,8 +71,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:backgroundTint="#E85C5C"
         android:layout_marginTop="30dp"
         android:text="Thêm" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#E85C5C"
+        android:text="Quay lại" />
     <!--    <LinearLayout-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="wrap_content"-->

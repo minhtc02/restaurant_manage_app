@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class Login_Activity extends AppCompatActivity implements FindData {
     EditText ed_user, ed_pass;
-    Button btn_login;
+    Button btn_login, btn_log_not_acc;
     ArrayList<Account> list;
     Account account;
     String username;
@@ -101,6 +101,10 @@ public class Login_Activity extends AppCompatActivity implements FindData {
             }
 
         });
+
+        btn_log_not_acc.setOnClickListener(v -> {
+            startActivity(new Intent(this, MainActivity.class));
+        });
     }
 
     private void checkLogin() {
@@ -117,6 +121,7 @@ public class Login_Activity extends AppCompatActivity implements FindData {
         ed_user = findViewById(R.id.ed_username_login);
         ed_pass = findViewById(R.id.ed_pass_login);
         btn_login = findViewById(R.id.button_login);
+        btn_log_not_acc = findViewById(R.id.button_login_not_account);
     }
 
     @Override

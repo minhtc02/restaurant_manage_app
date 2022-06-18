@@ -25,9 +25,10 @@ public class AddDishFragment extends Fragment implements RunSql {
     public static final String TAG = MainActivity.class.getSimpleName();
     View view;
     EditText edName, edDescribe, edVote, edPrice, edImage;
-    Button btnAdd, btnChooseImg;
+    Button btnAdd, btnChooseImg, btn_back;
     ImageView img_item;
     TextView btnPreview;
+    MainActivity mainActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +37,7 @@ public class AddDishFragment extends Fragment implements RunSql {
 
         view = inflater.inflate(R.layout.fragment_add_dish, container, false);
 
+        mainActivity = (MainActivity) getActivity();
         init();
         mapping();
         updateView();
@@ -58,9 +60,13 @@ public class AddDishFragment extends Fragment implements RunSql {
         btnChooseImg = view.findViewById(R.id.btn_chonanh);
         img_item = view.findViewById(R.id.imgPreView);
         btnPreview = view.findViewById(R.id.btnPreview);
+        btn_back = view.findViewById(R.id.btn_back);
     }
 
     private void setClick() {
+        btn_back.setOnClickListener(v ->{
+            mainActivity.replaceFragmentSetting();
+        });
 //        btnChooseImg.setOnClickListener(v -> {
 //            requestPermissonChangImage();
 //        });
