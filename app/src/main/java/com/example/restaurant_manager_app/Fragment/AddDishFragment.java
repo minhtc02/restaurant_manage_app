@@ -2,7 +2,6 @@ package com.example.restaurant_manager_app.Fragment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +21,12 @@ import com.example.restaurant_manager_app.R;
 
 public class AddDishFragment extends Fragment implements RunSql {
 
-    public static final String TAG = MainActivity.class.getSimpleName();
     View view;
     EditText edName, edDescribe, edVote, edPrice, edImage;
     Button btnAdd, btnChooseImg;
-    ImageView img_item;
+    ImageView img_item, imgBack;
     TextView btnPreview;
+    MainActivity mMainActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,8 +43,7 @@ public class AddDishFragment extends Fragment implements RunSql {
     }
 
     private void init() {
-
-
+        mMainActivity = (MainActivity) getActivity();
     }
 
     private void mapping() {
@@ -58,19 +56,32 @@ public class AddDishFragment extends Fragment implements RunSql {
         btnChooseImg = view.findViewById(R.id.btn_chonanh);
         img_item = view.findViewById(R.id.imgPreView);
         btnPreview = view.findViewById(R.id.btnPreview);
+        imgBack = view.findViewById(R.id.imgBack);
     }
 
     private void setClick() {
 //        btnChooseImg.setOnClickListener(v -> {
 //            requestPermissonChangImage();
 //        });
-        btnPreview.setOnClickListener(v -> {
-            Glide.with(getContext()).load(edImage.getText().toString()).into(img_item);
-        });
+        imgBack.setOnClickListener(v -> mMainActivity.replaceFragmentSetting());
+        btnPreview.setOnClickListener(v -> Glide.with(getContext()).load(edImage.getText().toString()).into(img_item));
         btnAdd.setOnClickListener(v -> addDish());
     }
 
     private void updateView() {
+    }
+    private boolean validate(){
+        String name = edName.getText().toString();
+        String describe = edDescribe.getText().toString();
+        String vote = edVote.getText().toString();
+        String price = edPrice.getText().toString();
+        String image = edImage.getText().toString();
+        if (name.equals("")||describe.equals("")||vote.equals("")||price.equals("")||image.equals("")){
+            String m = "Bạn phải nhập đầy đủ thông tin";
+            noitifyR(m);
+            return false;
+        }
+        return true;
     }
 
     private void addDish() {
@@ -90,14 +101,22 @@ public class AddDishFragment extends Fragment implements RunSql {
                 "', '" +
                 image +
                 "')";
-        Log.i(TAG, sql);
-        new ApiRunSql(sql, this).execute();
+        if (validate()){
+            new ApiRunSql(sql, this).execute();
+        }
     }
 
 
     @Override
     public void start() {
         //Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
+    }
+    private void noitifyR(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage(""+message);
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
+        builder.show();
     }
 
     @Override

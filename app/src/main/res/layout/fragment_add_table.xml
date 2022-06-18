@@ -6,53 +6,52 @@
     android:orientation="vertical"
     android:padding="5dp"
     tools:context=".Fragment.AddTableFragment">
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="48dp"
         android:text="Nhập thông tin"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        android:layout_gravity="center"/>
+        android:textSize="20dp" />
+
     <EditText
         android:id="@+id/edName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập tên bàn"
         android:layout_marginTop="30dp"
-        />
+        android:hint="Nhập tên bàn" />
+
     <EditText
         android:id="@+id/edFloor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tầng"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Tầng" />
+
     <EditText
         android:id="@+id/edStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Trạng thái"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Trạng thái" />
+
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thêm"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:backgroundTint="#FF4D00"
-        />
-    <Button
-        android:id="@+id/btn_back3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Quay Lại"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#FF4D00"
-        />
+        android:text="Thêm" />
+
 
 </LinearLayout>

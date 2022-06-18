@@ -20,7 +20,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        String title = "Có đơn hàng vừa được cập nhật";
+        String title = "Có đơn hàng chưa được cập nhật";
         String name = intent.getStringExtra("name");
         Intent intent1 = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, 0);
@@ -33,7 +33,10 @@ public class MyService extends Service {
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(1, notification);
+
         return START_NOT_STICKY;
+
+
     }
 
     @Override

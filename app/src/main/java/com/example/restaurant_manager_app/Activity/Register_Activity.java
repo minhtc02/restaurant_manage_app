@@ -1,7 +1,5 @@
 package com.example.restaurant_manager_app.Activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -32,12 +30,8 @@ public class Register_Activity extends AppCompatActivity implements RunSql {
         edImage = findViewById(R.id.edImage);
         btnLogIn = findViewById(R.id.btnLogIn);
         btnRegister = findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(v -> {
-            add();
-        });
-        btnLogIn.setOnClickListener(v -> {
-            startActivity(new Intent(this, Login_Activity.class));
-        });
+        btnRegister.setOnClickListener(v -> add());
+        btnLogIn.setOnClickListener(v -> startActivity(new Intent(this, Login_Activity.class)));
     }
 
     private void add() {
@@ -60,8 +54,26 @@ public class Register_Activity extends AppCompatActivity implements RunSql {
                 "', '" +
                 image +
                 "')";
-        new ApiRunSql(sql, this).execute();
+        if (validate()) {
+            new ApiRunSql(sql, this).execute();
+        }
+
     }
+
+    private boolean validate() {
+        String name = edName.getText().toString();
+        String username = edUsername.getText().toString();
+        String password = edPassword.getText().toString();
+        String phoneNum = edPhoneNum.getText().toString();
+        String email = edEmail.getText().toString();
+        String image = edImage.getText().toString();
+        if (name.equals("") || username.equals("") || password.equals("") || phoneNum.equals("") || email.equals("") || image.equals("")) {
+            Toast.makeText(this,"Bạn phải nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
 
     @Override
     public void start() {

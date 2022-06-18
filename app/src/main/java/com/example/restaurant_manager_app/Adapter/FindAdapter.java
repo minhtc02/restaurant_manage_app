@@ -61,9 +61,7 @@ public class FindAdapter extends ArrayAdapter<Dish> implements Filterable {
             tvPrice.setText(dish.getPrice());
             Glide.with(context).load(dish.getImage()).into(imgDish);
 
-            btnAddToCart.setOnClickListener(v -> {
-                fragment.addToCart(dish);
-            });
+            btnAddToCart.setOnClickListener(v -> fragment.addToCart(dish));
             imgDish.setOnClickListener(v -> {
                 Intent intent = new Intent(getContext(), Detail_Activity.class);
                 intent.putExtra("deltais", mListDish.get(position));

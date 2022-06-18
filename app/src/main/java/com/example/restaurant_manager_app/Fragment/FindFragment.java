@@ -1,8 +1,6 @@
 package com.example.restaurant_manager_app.Fragment;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,18 +10,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
-import com.example.restaurant_manager_app.Adapter.DishAdapter;
 import com.example.restaurant_manager_app.Adapter.FindAdapter;
 import com.example.restaurant_manager_app.Api.ApiFindData;
-import com.example.restaurant_manager_app.Api.ApiGetData;
 import com.example.restaurant_manager_app.Database.CartDAO;
 import com.example.restaurant_manager_app.Interface.FindData;
-import com.example.restaurant_manager_app.Interface.GetData;
-import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
@@ -60,7 +53,6 @@ public class FindFragment extends Fragment implements FindData {
         mapping();
         updateView();
         setClick();
-
         return view;
     }
 
@@ -80,13 +72,12 @@ public class FindFragment extends Fragment implements FindData {
 
 
     public void setClick() {
-        imgFind.setOnClickListener(v -> {
-            findDish();
-        });
+        imgFind.setOnClickListener(v -> findDish());
     }
-    public void findDish(){
-        String name = "'"+edName.getText().toString()+"'";
-        new ApiFindData(tableName,name,this).execute();
+
+    public void findDish() {
+        String name = "'" + edName.getText().toString() + "'";
+        new ApiFindData(tableName, name, this).execute();
         updateView();
     }
 
@@ -95,14 +86,7 @@ public class FindFragment extends Fragment implements FindData {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Đã thêm vào giỏ hàng");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        AlertDialog alert = builder.create();
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
         builder.show();
     }
 
@@ -136,7 +120,6 @@ public class FindFragment extends Fragment implements FindData {
     public void error() {
         Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
     }
-
 
 
 }

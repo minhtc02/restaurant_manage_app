@@ -6,10 +6,10 @@ import com.example.restaurant_manager_app.Interface.RunSql;
 
 import java.io.IOException;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.FormBody;
 import okhttp3.Response;
 
 public class ApiRunSql extends AsyncTask<Void, Void, Void> {
@@ -26,7 +26,7 @@ public class ApiRunSql extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        RequestBody body = new FormBody.Builder().add("sql",sql)
+        RequestBody body = new FormBody.Builder().add("sql", sql)
                 .build();
         Request request = new Request.Builder()
                 .url("https://mangareaderrecreate.000webhostapp.com/runsql.php")
@@ -47,10 +47,9 @@ public class ApiRunSql extends AsyncTask<Void, Void, Void> {
         if (data == null) {
             this.runSql.error();
         } else {
-            if(data.equals("ok")){
+            if (data.equals("ok")) {
                 this.runSql.finish();
-            }
-            else {
+            } else {
                 this.runSql.error();
             }
         }

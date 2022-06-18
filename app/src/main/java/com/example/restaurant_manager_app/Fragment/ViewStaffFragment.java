@@ -3,7 +3,6 @@ package com.example.restaurant_manager_app.Fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,22 +13,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
-import com.example.restaurant_manager_app.Adapter.DishAdapter;
 import com.example.restaurant_manager_app.Adapter.StaffAdapter;
 import com.example.restaurant_manager_app.Api.ApiGetData;
 import com.example.restaurant_manager_app.Api.ApiRunSql;
-import com.example.restaurant_manager_app.Database.CartDAO;
 import com.example.restaurant_manager_app.Interface.GetData;
-import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.Model.Account;
-import com.example.restaurant_manager_app.Model.Dish;
-import com.example.restaurant_manager_app.Model.Order;
 import com.example.restaurant_manager_app.R;
 
 import org.json.JSONArray;
@@ -48,7 +41,7 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
     String tableName = "getDataStaff.php";
     SwipeRefreshLayout mySwipeRefreshLayout;
     Dialog dialog;
-    EditText edId, edName, edPhoneNum, edEmail,edUsername, edPassword, edImage;
+    EditText edId, edName, edPhoneNum, edEmail, edUsername, edPassword, edImage;
     Button btnSave, btnCancel;
     Account item;
     ImageView imgBack;
@@ -66,12 +59,7 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
         new ApiGetData(tableName, this).execute();
         updateView();
         mySwipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        myUpdateOperation();
-                    }
-                }
+                this::myUpdateOperation
         );
         return view;
     }
@@ -81,7 +69,8 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
         list = new ArrayList<>();
         mMainActivity = (MainActivity) getActivity();
     }
-    public void myUpdateOperation(){
+
+    public void myUpdateOperation() {
         new ApiGetData(tableName, this).execute();
         mySwipeRefreshLayout.setRefreshing(false);
         updateView();
@@ -92,16 +81,13 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
         mySwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
         imgBack = view.findViewById(R.id.imgBack);
     }
+
     private void setClick() {
 
-        imgBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                back();
-            }
-        });
+        imgBack.setOnClickListener(view -> back());
     }
-    private void back(){
+
+    private void back() {
         mMainActivity.replaceFragmentSetting();
     }
 
@@ -113,15 +99,13 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Đã xóa");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                myUpdateOperation();
-            }
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            dialog.cancel();
+            myUpdateOperation();
         });
         builder.show();
     }
+
     public void updateR(Account account) {
         item = account;
         openDialog(getActivity());
@@ -148,12 +132,7 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
         edEmail.setText(item.getEmail());
         edImage.setText(item.getImage());
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
         btnSave.setOnClickListener(v -> {
             String id = edId.getText().toString();
             String name = edName.getText().toString();
@@ -163,19 +142,19 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
             String email = edEmail.getText().toString();
             String image = edImage.getText().toString();
             String sql = "UPDATE `account` SET `username` = '" +
-                    username+
+                    username +
                     "', `password` = '" +
-                    password+
+                    password +
                     "', `name` = '" +
-                    name+
+                    name +
                     "', `phoneNum` = '" +
-                    phoneNum+
+                    phoneNum +
                     "', `email` = '" +
-                    email+
+                    email +
                     "', `image` = '" +
-                    image+
+                    image +
                     "' WHERE `account`.`id` = " +
-                    id+"";
+                    id + "";
             new ApiRunSql(sql, this).execute();
             dialog.dismiss();
         });

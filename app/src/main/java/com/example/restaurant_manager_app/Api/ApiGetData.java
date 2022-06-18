@@ -25,7 +25,7 @@ public class ApiGetData extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         Request request = new Request.Builder()
-                .url("https://mangareaderrecreate.000webhostapp.com/"+tableName)
+                .url("https://mangareaderrecreate.000webhostapp.com/" + tableName)
                 .build();
         data = null;
         try {

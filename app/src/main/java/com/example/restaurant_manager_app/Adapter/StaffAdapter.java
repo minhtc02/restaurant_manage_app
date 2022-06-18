@@ -2,7 +2,6 @@ package com.example.restaurant_manager_app.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import com.example.restaurant_manager_app.Activity.Detail_Activity;
-import com.example.restaurant_manager_app.Database.AccountDAO;
-import com.example.restaurant_manager_app.Fragment.DishFragment;
 import com.example.restaurant_manager_app.Fragment.ViewStaffFragment;
 import com.example.restaurant_manager_app.Model.Account;
-import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
 import java.util.ArrayList;
@@ -28,8 +22,6 @@ public class StaffAdapter extends ArrayAdapter<Account> implements Filterable {
     private final Context context;
     private final ArrayList<Account> mListStaff;
     ViewStaffFragment fragment;
-    AccountDAO dao;
-    Account account;
 
 
     public StaffAdapter(Context context, ViewStaffFragment fragment, ArrayList<Account> mListStaff) {
@@ -67,12 +59,8 @@ public class StaffAdapter extends ArrayAdapter<Account> implements Filterable {
             tvPassword.setText(account.getPassword());
             Glide.with(context).load(account.getImage()).into(imgStaff);
 
-            btnDelete.setOnClickListener(v -> {
-                fragment.deleteR(account.getId());
-            });
-            btnUpdate.setOnClickListener(v -> {
-                fragment.updateR(account);
-            });
+            btnDelete.setOnClickListener(v -> fragment.deleteR(account.getId()));
+            btnUpdate.setOnClickListener(v -> fragment.updateR(account));
         }
 
         return convertView;

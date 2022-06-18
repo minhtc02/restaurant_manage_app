@@ -11,8 +11,6 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.bumptech.glide.Glide;
 import com.example.restaurant_manager_app.Fragment.CartFragment;
 import com.example.restaurant_manager_app.Model.Dish;
@@ -25,8 +23,8 @@ public class CartAdapter extends ArrayAdapter<Dish> implements Filterable {
     private final ArrayList<Dish> mListDish;
     CartFragment fragment;
 
-    public CartAdapter(Context context,CartFragment fragment, ArrayList<Dish> mListDish ) {
-        super(context, 0,mListDish);
+    public CartAdapter(Context context, CartFragment fragment, ArrayList<Dish> mListDish) {
+        super(context, 0, mListDish);
         this.context = context;
         this.mListDish = mListDish;
         this.fragment = fragment;
@@ -52,9 +50,7 @@ public class CartAdapter extends ArrayAdapter<Dish> implements Filterable {
             tvVote.setText(dish.getVote());
             tvPrice.setText(dish.getPrice());
             Glide.with(context).load(dish.getImage()).into(imgDish);
-            btnDelete.setOnClickListener(v -> {
-                fragment.deleteFromCart(dish.getId());
-            });
+            btnDelete.setOnClickListener(v -> fragment.deleteFromCart(dish.getId()));
         }
 
         return convertView;

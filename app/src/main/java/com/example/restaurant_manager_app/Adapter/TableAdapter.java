@@ -29,7 +29,7 @@ public class TableAdapter extends ArrayAdapter<Table> implements Filterable {
         super(context, 0, mListTable);
         this.context = context;
         this.mListTable = mListTable;
-        this.fragment  = fragment;
+        this.fragment = fragment;
     }
 
 
@@ -54,19 +54,10 @@ public class TableAdapter extends ArrayAdapter<Table> implements Filterable {
             tvFloor.setText(table.getFloor());
             tvStatus.setText(table.getStatus());
 
-            btnOn.setOnClickListener(v -> {
-                fragment.setOff(table.getId());
-            });
-            btnOff.setOnClickListener(v -> {
-                fragment.setOn(table.getId());
-            });
-            btnDelete.setOnClickListener(v -> {
-                fragment.deleteR(table.getId());
-            });
-            btnUpdate.setOnClickListener(v -> {
-                fragment.updateR(table);
-            });
-
+            btnOn.setOnClickListener(v -> fragment.setOff(table.getId()));
+            btnOff.setOnClickListener(v -> fragment.setOn(table.getId()));
+            btnDelete.setOnClickListener(v -> fragment.deleteR(table.getId()));
+            btnUpdate.setOnClickListener(v -> fragment.updateR(table));
 
 
             dao = new AccountDAO(getContext());

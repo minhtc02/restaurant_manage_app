@@ -1,15 +1,10 @@
 package com.example.restaurant_manager_app.Fragment;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.restaurant_manager_app.Activity.MainActivity;
@@ -30,25 +24,16 @@ import com.example.restaurant_manager_app.Api.ApiGetData;
 import com.example.restaurant_manager_app.Api.ApiRunSql;
 import com.example.restaurant_manager_app.Database.CartDAO;
 import com.example.restaurant_manager_app.Interface.GetData;
-import com.example.restaurant_manager_app.Interface.OnClickItemDish;
 import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.Model.Dish;
-import com.example.restaurant_manager_app.Model.Order;
 import com.example.restaurant_manager_app.R;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
-
-import gun0912.tedbottompicker.TedBottomPicker;
 
 
 public class DishFragment extends Fragment implements GetData, RunSql {
@@ -110,7 +95,8 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         list = new ArrayList<>();
         mMainActivity = (MainActivity) getActivity();
     }
-    public void myUpdateOperation(){
+
+    public void myUpdateOperation() {
         new ApiGetData(tableName, this).execute();
         mySwipeRefreshLayout.setRefreshing(false);
         updateView();
@@ -135,6 +121,7 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         });
         builder.show();
     }
+
     public void deleteR(String id) {
         String sql = "DELETE FROM `dish` WHERE `dish`.`id` = " +
                 "" +
@@ -152,6 +139,7 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         });
         builder.show();
     }
+
     public void updateR(Dish dish) {
         item = dish;
         openDialog(getActivity());
@@ -199,17 +187,17 @@ public class DishFragment extends Fragment implements GetData, RunSql {
             String price = edPrice.getText().toString();
             String image = edImage.getText().toString();
             String sql = "UPDATE `dish` SET `name` = '" +
-                    name+
+                    name +
                     "', `describes` = '" +
-                    describe+
+                    describe +
                     "', `vote` = '" +
-                    vote+
+                    vote +
                     "', `price` = '" +
-                    price+
+                    price +
                     "', `image` = '" +
-                    image+
+                    image +
                     "' WHERE `dish`.`id` = " +
-                    id+"";
+                    id + "";
             new ApiRunSql(sql, this).execute();
             dialog.dismiss();
         });

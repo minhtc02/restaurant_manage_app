@@ -1,15 +1,10 @@
 package com.example.restaurant_manager_app.Fragment;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,7 +17,6 @@ import com.example.restaurant_manager_app.Api.ApiGetData;
 import com.example.restaurant_manager_app.Api.ApiRunSql;
 import com.example.restaurant_manager_app.Interface.GetData;
 import com.example.restaurant_manager_app.Interface.RunSql;
-import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.Model.Order;
 import com.example.restaurant_manager_app.R;
 
@@ -42,9 +36,6 @@ public class OrderFragment extends Fragment implements GetData, RunSql {
     MainActivity mMainActivity;
     String tableName = "getDataOrder.php";
     SwipeRefreshLayout mySwipeRefreshLayout;
-    Dialog dialog;
-    EditText edId, edName, edPhoneNum, edDishes, edTime, edBill, edStatus;
-    Button btnSave, btnCancel;
 
 
     @Override
@@ -59,12 +50,7 @@ public class OrderFragment extends Fragment implements GetData, RunSql {
         new ApiGetData(tableName, this).execute();
         updateView();
         mySwipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        myUpdateOperation();
-                    }
-                }
+                this::myUpdateOperation
         );
         return view;
     }
@@ -88,22 +74,12 @@ public class OrderFragment extends Fragment implements GetData, RunSql {
         mySwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
     }
 
-
-    public void setClick(Dish dish) {
-        mMainActivity.replaceFragment();
-    }
-
     public void helper() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Vui lòng liên hệ : 012345678" + "\n" +
                 "Để được hỗ trợ sớm nhất có thể ");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
         builder.show();
     }
 
@@ -115,12 +91,9 @@ public class OrderFragment extends Fragment implements GetData, RunSql {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Đã xóa");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                myUpdateOperation();
-            }
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            dialog.cancel();
+            myUpdateOperation();
         });
         builder.show();
     }
@@ -138,20 +111,15 @@ public class OrderFragment extends Fragment implements GetData, RunSql {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setMessage("Đơn hàng đã được xác nhận");
             builder.setCancelable(true);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
             builder.show();
         }
         myUpdateOperation();
     }
 
     private void updateView() {
-            adapter = new OrderAdapter(getContext(), this, list);
-            listView.setAdapter(adapter);
+        adapter = new OrderAdapter(getContext(), this, list);
+        listView.setAdapter(adapter);
     }
 
 

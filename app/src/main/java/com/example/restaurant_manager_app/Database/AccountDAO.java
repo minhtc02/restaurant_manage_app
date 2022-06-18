@@ -46,13 +46,15 @@ public class AccountDAO {
         String sql = "SELECT * FROM Account";
         return getData(sql);
     }
+
     Account obj;
+
     @SuppressLint("Range")
     private Account getData(String sql, String... selectionArgs) {
-        Cursor c = db.rawQuery(sql, selectionArgs);
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(sql, selectionArgs);
 
         while (c.moveToNext()) {
-            obj =new Account();
+            obj = new Account();
             obj.setId(c.getString(c.getColumnIndex("id")));
             obj.setPermission(c.getString(c.getColumnIndex("permission")));
             obj.setUsername(c.getString(c.getColumnIndex("username")));
@@ -68,7 +70,7 @@ public class AccountDAO {
     public int checkExist() {
         int check = 1; // khong
         String getLS = "SELECT * FROM Account";
-        Cursor cursor = db.rawQuery(getLS, null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getLS, null);
         if (cursor.getCount() != 0) {
             check = -1;// co
         }

@@ -2,7 +2,6 @@ package com.example.restaurant_manager_app.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,50 +10,36 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-
 import com.example.restaurant_manager_app.Database.CartDAO;
 import com.example.restaurant_manager_app.Model.Cart;
 import com.example.restaurant_manager_app.R;
 import com.example.restaurant_manager_app.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity   {
-    private static final int NOTIFICATION_ID = 1;
-    private BottomNavigationView navigationView;
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
     private ViewPager viewPager;
     ImageView imgBell, imgCart;
     TextView edFind;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd");
-    private NotificationManagerCompat notificationManagerCompat;
     CartDAO dao;
-
-    public static ArrayList<Cart> manggiohang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        navigationView = findViewById(R.id.bottom);
+        BottomNavigationView navigationView = findViewById(R.id.bottom);
         viewPager = findViewById(R.id.view_pager);
         imgBell = findViewById(R.id.imgBell);
         imgCart = findViewById(R.id.imgCart);
         edFind = findViewById(R.id.edFind);
-        this.notificationManagerCompat = NotificationManagerCompat.from(this);
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
         String name = "Gà nướng muối ớt";
         dao = new CartDAO(this);
         if (dao.checkCart() < 0) {
             startServices(name);
         }
-
-        if (manggiohang != null) {
-
-        } else {
-            manggiohang = new ArrayList<>();
-        }
-
         setUpViewPager();
         navigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -92,25 +77,27 @@ public class MainActivity extends AppCompatActivity   {
         stopService(intent);
     }
 
-    private String getNow() {
-        return sdf.format(Calendar.getInstance().getTime());
-    }
 
     public void replaceFragment() {
         viewPager.setCurrentItem(5);
     }
+
     public void replaceFragmentOrder() {
         viewPager.setCurrentItem(3);
     }
+
     public void replaceFragmentDish() {
         viewPager.setCurrentItem(1);
     }
+
     public void replaceFragmentTable() {
         viewPager.setCurrentItem(0);
     }
+
     public void replaceFragmentCart() {
         viewPager.setCurrentItem(4);
     }
+
     public void replaceFragmentSetting() {
         viewPager.setCurrentItem(7);
     }
@@ -118,12 +105,15 @@ public class MainActivity extends AppCompatActivity   {
     public void replaceFragmentAddStaff() {
         viewPager.setCurrentItem(8);
     }
+
     public void replaceFragmentViewStaff() {
         viewPager.setCurrentItem(9);
     }
+
     public void replaceFragmentAddDish() {
         viewPager.setCurrentItem(10);
     }
+
     public void replaceFragmentAddTable() {
         viewPager.setCurrentItem(11);
     }

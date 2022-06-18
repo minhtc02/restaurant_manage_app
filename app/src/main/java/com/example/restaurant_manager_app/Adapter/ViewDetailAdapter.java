@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
 import com.example.restaurant_manager_app.Fragment.DishFragment;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
@@ -28,7 +27,7 @@ public class ViewDetailAdapter extends ArrayAdapter<Dish> implements Filterable 
         super(context, 0, mListDish);
         this.context = context;
         this.mListDish = mListDish;
-        this.fragment  = fragment;
+        this.fragment = fragment;
     }
 
     @SuppressLint("InflateParams")

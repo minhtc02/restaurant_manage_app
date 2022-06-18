@@ -24,7 +24,9 @@ import com.example.restaurant_manager_app.Model.Account;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class CartFragment extends Fragment implements RunSql {
@@ -39,6 +41,7 @@ public class CartFragment extends Fragment implements RunSql {
     TextView tvBill;
     String bill;
     Account account;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
     public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -105,7 +108,9 @@ public class CartFragment extends Fragment implements RunSql {
                     account.getPhoneNum()+
                     "', '" +
                     dishes +
-                    "', '7:00', '" +
+                    "', '" +
+                    getNow()+
+                    "', '" +
                     bill +
                     "', 'Đang xử lý')";
             Log.i(TAG, sql);
@@ -114,6 +119,9 @@ public class CartFragment extends Fragment implements RunSql {
             cartDAO.resetC();
             setUp();
         }
+    }
+    private String getNow() {
+        return sdf.format(Calendar.getInstance().getTime());
     }
 
     private void setClick() {

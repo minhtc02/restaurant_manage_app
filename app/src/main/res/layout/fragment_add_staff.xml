@@ -7,74 +7,72 @@
     android:padding="5dp"
     tools:context=".Fragment.AddStaffFragment">
 
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="48dp"
         android:text="Nhập thông tin"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        android:layout_gravity="center"/>
+        android:textSize="20dp" />
+
     <EditText
         android:id="@+id/edName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập tên nhân viên"
         android:layout_marginTop="30dp"
-        />
+        android:hint="Nhập tên nhân viên" />
+
     <EditText
         android:id="@+id/edUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tên đăng nhập"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Tên đăng nhập" />
+
     <EditText
         android:id="@+id/edPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mật khẩu"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Mật khẩu" />
+
     <EditText
         android:id="@+id/edPhoneNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Số điện thoại"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Số điện thoại" />
+
     <EditText
         android:id="@+id/edEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Email" />
+
     <EditText
         android:id="@+id/edImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ảnh "
         android:layout_marginTop="15dp"
-        />
+        android:hint="Ảnh " />
+
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thêm"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:backgroundTint="#FF4D00"
-        />
-    <Button
-        android:id="@+id/btn_back2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Quay Lại"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#FF4D00"
-        />
+        android:text="Thêm" />
+
 
 </LinearLayout>

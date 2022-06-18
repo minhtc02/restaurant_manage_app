@@ -67,6 +67,10 @@ public class OrderAdapter extends ArrayAdapter<Order> implements Filterable {
                 tvType.setText("Đồ ăn/ Bàn #");
                 imgDish.setImageResource(R.drawable.table_img);
             }
+            else {
+                tvType.setText("Đồ ăn #");
+                imgDish.setImageResource(R.drawable.img_ganuong);
+            }
             btnHelp.setOnClickListener(v -> fragment.helper());
             btnDelete.setOnClickListener(v -> fragment.deleteR(order.getId()));
             btnAcept.setOnClickListener(v -> fragment.accept(order));

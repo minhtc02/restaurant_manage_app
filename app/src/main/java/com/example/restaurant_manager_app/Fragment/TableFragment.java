@@ -60,7 +60,7 @@ public class TableFragment extends Fragment implements GetData, RunSql {
         updateView();
         setClick();
         mySwipeRefreshLayout.setOnRefreshListener(
-                () -> myUpdateOperation()
+                this::myUpdateOperation
         );
         return view;
     }
@@ -91,7 +91,7 @@ public class TableFragment extends Fragment implements GetData, RunSql {
             dish.setDescribe("10 điểm-");
             dish.setVote("5");
             dish.setPrice("50000");
-           // dish.setImage("https://bizweb.dktcdn.net/100/121/953/products/ban-ghe-nha-hang-174350.jpg?v=1505367058920");
+            // dish.setImage("https://bizweb.dktcdn.net/100/121/953/products/ban-ghe-nha-hang-174350.jpg?v=1505367058920");
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             if (table.getStatus().equals("Trống")) {
@@ -142,15 +142,13 @@ public class TableFragment extends Fragment implements GetData, RunSql {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Đã xóa");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                scNotify();
-            }
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            dialog.cancel();
+            scNotify();
         });
         builder.show();
     }
+
     public void updateR(Table table) {
         item = table;
         openDialog(getActivity());
@@ -171,55 +169,49 @@ public class TableFragment extends Fragment implements GetData, RunSql {
         edFloor.setText(item.getFloor());
         edStatus.setText(item.getStatus());
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
         btnSave.setOnClickListener(v -> {
             String id = edId.getText().toString();
             String name = edName.getText().toString();
             String floor = edFloor.getText().toString();
             String status = edStatus.getText().toString();
             String sql = "UPDATE `tables` SET `name` = '" +
-                    name+
+                    name +
                     "', `floor` = '" +
-                    floor+
+                    floor +
                     "', `status` = '" +
-                    status+
+                    status +
                     "' WHERE `tables`.`id` = " +
-                    id+"";
+                    id + "";
             new ApiRunSql(sql, this).execute();
             dialog.dismiss();
         });
         dialog.show();
     }
-    public void setOn(String id){
+
+    public void setOn(String id) {
         String sql = "UPDATE `tables` SET `status` = 'Trống' WHERE `tables`.`id` = " +
-                id+"";
+                id + "";
         new ApiRunSql(sql, this).execute();
         scNotify();
 
     }
-    public void setOff(String id){
+
+    public void setOff(String id) {
         String sql = "UPDATE `tables` SET `status` = 'Đã đặt' WHERE `tables`.`id` = " +
-                id+"";
+                id + "";
         new ApiRunSql(sql, this).execute();
         scNotify();
-        Log.d("TAG", "onCreate: " +sql);
+        Log.d("TAG", "onCreate: " + sql);
     }
 
-    private void scNotify(){
+    private void scNotify() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Hoàn thành");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                myUpdateOperation();
-            }
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            dialog.cancel();
+            myUpdateOperation();
         });
         builder.show();
     }

@@ -3,14 +3,13 @@ package com.example.restaurant_manager_app.Api;
 import android.os.AsyncTask;
 
 import com.example.restaurant_manager_app.Interface.FindData;
-import com.example.restaurant_manager_app.Interface.RunSql;
 
 import java.io.IOException;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.FormBody;
 import okhttp3.Response;
 
 public class ApiFindData extends AsyncTask<Void, Void, Void> {
@@ -29,10 +28,10 @@ public class ApiFindData extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        RequestBody body = new FormBody.Builder().add("name",name)
+        RequestBody body = new FormBody.Builder().add("name", name)
                 .build();
         Request request = new Request.Builder()
-                .url("https://mangareaderrecreate.000webhostapp.com/"+tableName)
+                .url("https://mangareaderrecreate.000webhostapp.com/" + tableName)
                 .post(body)
                 .build();
         data = null;

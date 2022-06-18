@@ -1,7 +1,6 @@
 package com.example.restaurant_manager_app.Fragment;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,12 +42,7 @@ public class UserFragment extends Fragment {
         setUp();
         setClick();
         mySwipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        myUpdateOperation();
-                    }
-                }
+                this::myUpdateOperation
         );
         return view;
     }
@@ -101,36 +95,21 @@ public class UserFragment extends Fragment {
             startActivity(new Intent(getContext(), Login_Activity.class));
         });
 
-        btnOrder.setOnClickListener(v -> {
-            mainActivity.replaceFragmentOrder();
-        });
+        btnOrder.setOnClickListener(v -> mainActivity.replaceFragmentOrder());
 
-        btnDish.setOnClickListener(v -> {
-            mainActivity.replaceFragmentDish();
-        });
+        btnDish.setOnClickListener(v -> mainActivity.replaceFragmentDish());
 
-        btnTable.setOnClickListener(v -> {
-            mainActivity.replaceFragmentTable();
-        });
+        btnTable.setOnClickListener(v -> mainActivity.replaceFragmentTable());
 
-        btnCart.setOnClickListener(v -> {
-            mainActivity.replaceFragmentCart();
-        });
-        btnSetting.setOnClickListener(v -> {
-            mainActivity.replaceFragmentSetting();
-        });
+        btnCart.setOnClickListener(v -> mainActivity.replaceFragmentCart());
+        btnSetting.setOnClickListener(v -> mainActivity.replaceFragmentSetting());
 
         btnHelp.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setMessage("Vui lòng liên hệ : 012345678" + "\n" +
                     "Để được hỗ trợ sớm nhất có thể ");
             builder.setCancelable(true);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
             builder.show();
         });
 
@@ -147,30 +126,35 @@ public class UserFragment extends Fragment {
             imgImage.setImageResource(R.drawable.img_ganuong);
             btnSetting.setVisibility(View.INVISIBLE);
         } else {
-            if (account.getPermission().equals("admin")) {
-                tvName.setText(account.getName());
-                tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
-                tvEmail.setText(account.getEmail());
-                Glide.with(getContext()).load(account.getImage()).into(imgImage);
-                btnSetting.setVisibility(View.VISIBLE);
-            } else if (account.getPermission().equals("staff")) {
-                tvName.setText(account.getName());
-                tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
-                tvEmail.setText(account.getEmail());
-                Glide.with(getContext()).load(account.getImage()).into(imgImage);
-                btnSetting.setVisibility(View.INVISIBLE);
-            } else if (account.getPermission().equals("customer")) {
-                tvName.setText(account.getName());
-                tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
-                tvEmail.setText(account.getEmail());
-                Glide.with(getContext()).load(account.getImage()).into(imgImage);
-                btnSetting.setVisibility(View.INVISIBLE);
-            } else {
-                tvName.setText("Tên khách hàng");
-                tvPhoneNum.setText("SĐT: XXX XXX XXXX");
-                tvEmail.setText("user@gmail.com");
-                imgImage.setImageResource(R.drawable.img_ganuong);
-                btnSetting.setVisibility(View.INVISIBLE);
+            switch (account.getPermission()) {
+                case "admin":
+                    tvName.setText(account.getName());
+                    tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
+                    tvEmail.setText(account.getEmail());
+                    Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                    btnSetting.setVisibility(View.VISIBLE);
+                    break;
+                case "staff":
+                    tvName.setText(account.getName());
+                    tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
+                    tvEmail.setText(account.getEmail());
+                    Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                    btnSetting.setVisibility(View.INVISIBLE);
+                    break;
+                case "customer":
+                    tvName.setText(account.getName());
+                    tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
+                    tvEmail.setText(account.getEmail());
+                    Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                    btnSetting.setVisibility(View.INVISIBLE);
+                    break;
+                default:
+                    tvName.setText("Tên khách hàng");
+                    tvPhoneNum.setText("SĐT: XXX XXX XXXX");
+                    tvEmail.setText("user@gmail.com");
+                    imgImage.setImageResource(R.drawable.img_ganuong);
+                    btnSetting.setVisibility(View.INVISIBLE);
+                    break;
             }
         }
     }
