@@ -91,7 +91,7 @@ public class TableFragment extends Fragment implements GetData, RunSql {
             dish.setDescribe("10 điểm-");
             dish.setVote("5");
             dish.setPrice("50000");
-            dish.setImage("https://bizweb.dktcdn.net/100/121/953/products/ban-ghe-nha-hang-174350.jpg?v=1505367058920");
+           // dish.setImage("https://bizweb.dktcdn.net/100/121/953/products/ban-ghe-nha-hang-174350.jpg?v=1505367058920");
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             if (table.getStatus().equals("Trống")) {

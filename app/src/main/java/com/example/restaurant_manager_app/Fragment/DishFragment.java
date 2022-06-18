@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -42,6 +43,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -163,17 +165,16 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         edDescribe.setText(item.getDescribe());
         edVote.setText(item.getVote());
         edPrice.setText(item.getPrice());
-        edImage.setText(item.getImage());
+        edImage.setText(item.getImage().toString());
 
         img_item = dialog.findViewById(R.id.img_item);
         btn_choseimg = dialog.findViewById(R.id.btn_chonanh);
 
-        Picasso.get().load(item.getImage())
-                .into(img_item);
+        Picasso.get().load(item.getImage()).into(img_item);
 
-        btn_choseimg.setOnClickListener(v -> {
-            requestPermissonChangImage();
-        });
+//        btn_choseimg.setOnClickListener(v -> {
+//            requestPermissonChangImage();
+//        });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,42 +243,42 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
     }
 
-    private void requestPermissonChangImage() {
-        PermissionListener permissionlistener = new PermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-                openImagePicker();
-            }
-
-            @Override
-            public void onPermissionDenied(List<String> deniedPermissions) {
-                Toast.makeText(getContext(), "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
-            }
-        };
-
-        TedPermission.create()
-                .setPermissionListener(permissionlistener)
-                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
-                .setPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .check();
-    }
-
-    private void openImagePicker() {
-        TedBottomPicker.OnImageSelectedListener onImageSelectedListener = new TedBottomPicker.OnImageSelectedListener() {
-            @Override
-            public void onImageSelected(Uri uri) {
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
-                    img_item.setImageBitmap(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(getContext())
-                .setOnImageSelectedListener(onImageSelectedListener).create();
-        tedBottomPicker.show(getParentFragmentManager());
-    }
+//    private void requestPermissonChangImage() {
+//        PermissionListener permissionlistener = new PermissionListener() {
+//            @Override
+//            public void onPermissionGranted() {
+//                openImagePicker();
+//            }
+//
+//            @Override
+//            public void onPermissionDenied(List<String> deniedPermissions) {
+//                Toast.makeText(getContext(), "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//
+//        TedPermission.create()
+//                .setPermissionListener(permissionlistener)
+//                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+//                .setPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                .check();
+//    }
+//
+//    private void openImagePicker() {
+//        TedBottomPicker.OnImageSelectedListener onImageSelectedListener = new TedBottomPicker.OnImageSelectedListener() {
+//            @Override
+//            public void onImageSelected(Uri uri) {
+//                try {
+//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
+//                    img_item.setImageBitmap(bitmap);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        };
+//
+//        TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(getContext())
+//                .setOnImageSelectedListener(onImageSelectedListener).create();
+//        tedBottomPicker.show(getParentFragmentManager());
+//    }
 
 }

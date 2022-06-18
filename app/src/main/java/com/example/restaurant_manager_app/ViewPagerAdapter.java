@@ -27,8 +27,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0:
-                return new TableFragment();
             case 1:
                 return new DishFragment();
             case 2:
@@ -51,6 +49,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new AddDishFragment();
             case 11:
                 return new AddTableFragment();
+            case 0:
             default:
                 return new TableFragment();
         }

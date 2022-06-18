@@ -98,7 +98,6 @@ public class UserFragment extends Fragment {
         btnLogOut.setOnClickListener(v -> {
 
             dao.resetA();
-
             startActivity(new Intent(getContext(), Login_Activity.class));
         });
 

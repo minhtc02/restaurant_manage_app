@@ -1,66 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragment.AddDishFragment"
-    android:padding="5dp">
+    android:padding="5dp"
+    tools:context=".Fragment.AddDishFragment">
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="48dp"
         android:text="Nhập thông tin"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        android:layout_gravity="center"/>
+        android:textSize="20dp" />
+
     <EditText
         android:id="@+id/edName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập tên món ăn"
         android:layout_marginTop="30dp"
-        />
+        android:hint="Nhập tên món ăn" />
+
     <EditText
         android:id="@+id/edDescribe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mô tả"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Mô tả" />
+
     <EditText
         android:id="@+id/edVote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Đánh giá"
         android:layout_marginTop="15dp"
-        />
+        android:hint="Đánh giá" />
+
     <EditText
         android:id="@+id/edPrice"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Giá tiền"
-    android:layout_marginTop="15dp"
-    />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Giá tiền" />
+
     <EditText
         android:id="@+id/edImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ảnh minh họa"
         android:layout_marginTop="15dp"
+        android:hint="Ảnh minh họa" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:text="Xem trước"
+        android:id="@+id/btnPreview"
         />
+    <ImageView
+        android:id="@+id/imgPreView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/img_ganuong" />
+
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thêm"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        />
+        android:text="Thêm" />
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal">-->
+    <!--        -->
+    <!--        <Button-->
+    <!--            android:id="@+id/btn_chonanh"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Chọn ảnh"-->
+    <!--            android:layout_marginTop="50dp"-->
+    <!--            android:layout_marginLeft="50dp"-->
+    <!--            android:backgroundTint="#4FC3F7"/>-->
 
-
+    <!--    </LinearLayout>-->
 
 
 </LinearLayout>

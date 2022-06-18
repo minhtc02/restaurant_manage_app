@@ -36,6 +36,7 @@ public class CartDAO {
     public void delete(String id) {
         db.delete("Cart", "id=?", new String[]{id});
     }
+
     //delete
     public void resetC() {
         db.delete("Cart", "", null);
@@ -50,15 +51,15 @@ public class CartDAO {
     public String getDishes() {
 
         String sql = "SELECT name FROM Cart";
-        List list = new ArrayList();
-        Cursor c = db.rawQuery(sql, null);
+        List<String> list = new ArrayList<>();
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(sql, null);
         while (c.moveToNext()) {
             @SuppressLint("Range") String a = c.getString(c.getColumnIndex("name"));
             list.add(a);
         }
         String a = list.toString();
-        a = a.replace("[","");
-        a = a.replace("]","");
+        a = a.replace("[", "");
+        a = a.replace("]", "");
         return a;
     }
 
@@ -69,7 +70,7 @@ public class CartDAO {
 
         String sql = "SELECT SUM(price) AS \"total\"\n" +
                 "FROM Cart";
-        Cursor c = db.rawQuery(sql, null);
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(sql, null);
         while (c.moveToNext()) {
             a = Integer.parseInt(c.getString(c.getColumnIndex("total")));
 
@@ -98,15 +99,16 @@ public class CartDAO {
     public int checkCart() {
         int check = 1;
         String getLS = "SELECT * FROM Cart";
-        Cursor cursor = db.rawQuery(getLS, null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getLS, null);
         if (cursor.getCount() != 0) {
             check = -1;
         }
         return check;
     }
+
     public int checkExistsCart(String id) {
         int check = 1;
-        String getMG = "SELECT * FROM Cart WHERE name=" + "'"+id+"'" ;
+        String getMG = "SELECT * FROM Cart WHERE name=" + "'" + id + "'";
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getMG, null);
         if (cursor.getCount() != 0) {
             check = -1;

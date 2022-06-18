@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 
 public class Dish implements Serializable {
     private String id;

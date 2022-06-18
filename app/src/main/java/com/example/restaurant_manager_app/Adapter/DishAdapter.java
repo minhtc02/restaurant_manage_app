@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
 import com.example.restaurant_manager_app.Activity.Detail_Activity;
 import com.example.restaurant_manager_app.Database.AccountDAO;
 import com.example.restaurant_manager_app.Fragment.DishFragment;
@@ -32,10 +31,10 @@ public class DishAdapter extends ArrayAdapter<Dish> implements Filterable {
 
 
     public DishAdapter(Context context, DishFragment fragment, ArrayList<Dish> mListDish) {
-        super(context, 0,mListDish );
+        super(context, 0, mListDish);
         this.context = context;
         this.mListDish = mListDish;
-        this.fragment  = fragment;
+        this.fragment = fragment;
     }
 
 
@@ -61,19 +60,13 @@ public class DishAdapter extends ArrayAdapter<Dish> implements Filterable {
             tvPrice.setText(dish.getPrice());
             Glide.with(context).load(dish.getImage()).into(imgDish);
 
-            btnAddToCart.setOnClickListener(v -> {
-                fragment.addToCart(dish);
-            });
+            btnAddToCart.setOnClickListener(v -> fragment.addToCart(dish));
 
-            btnDelete.setOnClickListener(v -> {
-                fragment.deleteR(dish.getId());
-            });
-            btnUpdate.setOnClickListener(v -> {
-                fragment.updateR(dish);
-            });
+            btnDelete.setOnClickListener(v -> fragment.deleteR(dish.getId()));
+            btnUpdate.setOnClickListener(v -> fragment.updateR(dish));
             imgDish.setOnClickListener(v -> {
-               Intent intent = new Intent(getContext(), Detail_Activity.class);
-               intent.putExtra("deltais", mListDish.get(position));
+                Intent intent = new Intent(getContext(), Detail_Activity.class);
+                intent.putExtra("deltais", mListDish.get(position));
                 getContext().startActivity(intent);
             });
             dao = new AccountDAO(getContext());
