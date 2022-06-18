@@ -76,7 +76,6 @@
             android:layout_height="wrap_content"
             android:text="Đã Đặt"
             android:backgroundTint="@color/red"
-
             />
 
         <Button
@@ -84,14 +83,16 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginTop="38dp"
-            android:text="Xóa" />
+            android:text="Xóa"
+            android:backgroundTint="#FF4D00"/>
 
         <Button
             android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="78dp"
-            android:text="Sửa" />
+            android:text="Sửa"
+            android:backgroundTint="#FF4D00"/>
 
 
     </FrameLayout>

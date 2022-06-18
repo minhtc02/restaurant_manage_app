@@ -114,14 +114,16 @@
                     android:id="@+id/btnDelete"
                     android:layout_width="125dp"
                     android:layout_height="50dp"
-                    android:text="Xóa" />
+                    android:text="Xóa"
+                    android:backgroundTint="#FF4D00"/>
 
                 <Button
                     android:id="@+id/btnUpdate"
                     android:layout_width="125dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:text="Sửa" />
+                    android:text="Sửa"
+                    android:backgroundTint="#FF4D00"/>
             </LinearLayout>
         </LinearLayout>
 

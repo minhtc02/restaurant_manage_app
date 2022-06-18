@@ -12,13 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom"
-        android:layout_marginTop="55dp" />
+        android:layout_marginTop="55dp">
+
+        <FrameLayout
+            android:id="@+id/flContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:itemIconTint="@color/color_check_bottom"
+        app:itemTextColor="@color/color_check_bottom"
         app:menu="@menu/menu_bottom_nav"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <Toolbar
@@ -27,10 +35,17 @@
         android:layout_alignParentTop="false"
         android:background="#FF4D00">
 
+        <ImageView
+            android:id="@+id/imgback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
         <TextView
             android:id="@+id/edFind"
             android:layout_width="250dp"
             android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
             android:background="@color/white"
             android:hint="Tìm kiếm"
             android:textSize="20dp" />
@@ -39,18 +54,15 @@
             android:id="@+id/imgBell"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/alerticon" />
 
         <ImageView
             android:id="@+id/imgCart"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             android:src="@drawable/shoppingcard" />
     </Toolbar>
-    <FrameLayout
-        android:id="@+id/flContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
 </RelativeLayout>
