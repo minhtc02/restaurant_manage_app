@@ -23,9 +23,9 @@ public class AddStaffFragment extends Fragment implements RunSql {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     View view;
-    MainActivity mMainActivity;
+    MainActivity mainActivity;
     EditText edName,edUsername,edPassword,edPhoneNum,edEmail,edImage;
-    Button btnAdd;
+    Button btnAdd, btnBack;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class AddStaffFragment extends Fragment implements RunSql {
         return view;
     }
     private void init() {
-
+        mainActivity = (MainActivity) getActivity();
 
     }
 
@@ -55,12 +55,22 @@ public class AddStaffFragment extends Fragment implements RunSql {
         edEmail  = view.findViewById(R.id.edEmail);
         edImage  = view.findViewById(R.id.edImage);
         btnAdd = view.findViewById(R.id.btnAdd);
+        btnBack = view.findViewById(R.id.btn_back2);
     }
 
     private void setClick() {
         btnAdd.setOnClickListener(v -> {
             add();
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
+    }
+    private void back(){
+        mainActivity.replaceFragmentSetting();
     }
 
     private void updateView() {

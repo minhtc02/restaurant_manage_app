@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
     EditText edId, edName, edPhoneNum, edEmail,edUsername, edPassword, edImage;
     Button btnSave, btnCancel;
     Account item;
+    ImageView imgBack;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +62,7 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
 
         init();
         mapping();
+        setClick();
         new ApiGetData(tableName, this).execute();
         updateView();
         mySwipeRefreshLayout.setOnRefreshListener(
@@ -87,6 +90,19 @@ public class ViewStaffFragment extends Fragment implements GetData, RunSql {
     private void mapping() {
         listView = view.findViewById(R.id.lvStaff);
         mySwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
+        imgBack = view.findViewById(R.id.imgBack);
+    }
+    private void setClick() {
+
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
+    }
+    private void back(){
+        mMainActivity.replaceFragmentSetting();
     }
 
     public void deleteR(String id) {
