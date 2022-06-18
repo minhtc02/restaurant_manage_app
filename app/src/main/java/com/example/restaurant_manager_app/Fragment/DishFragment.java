@@ -92,14 +92,14 @@ public class DishFragment extends Fragment implements GetData, RunSql {
                     }
                 }
         );
-        imgback1 = view.findViewById(R.id.imgback1);
 
+//        imgback1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view1) {
+//
+//            }
+//        });
         return view;
-        imgback1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
     }
 
 
@@ -117,6 +117,7 @@ public class DishFragment extends Fragment implements GetData, RunSql {
     private void mapping() {
         listView = view.findViewById(R.id.lvDish);
         mySwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
+
     }
 
     public void addToCart(final Dish dish) {

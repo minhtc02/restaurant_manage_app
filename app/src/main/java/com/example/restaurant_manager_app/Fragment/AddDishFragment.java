@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -26,7 +27,8 @@ public class AddDishFragment extends Fragment implements RunSql {
     View view;
     MainActivity mMainActivity;
     EditText edName,edDescribe,edVote,edPrice,edImage;
-    Button btnAdd;
+    Button btnAdd, btn_back;
+    MainActivity mainActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,8 +43,7 @@ public class AddDishFragment extends Fragment implements RunSql {
         return view;
     }
     private void init() {
-
-
+        mainActivity = (MainActivity) getActivity();
     }
 
     private void mapping() {
@@ -52,12 +53,21 @@ public class AddDishFragment extends Fragment implements RunSql {
         edPrice  = view.findViewById(R.id.edPrice);
         edImage  = view.findViewById(R.id.edImage);
         btnAdd = view.findViewById(R.id.btnAdd);
+        btn_back = view.findViewById(R.id.btn_back);
     }
 
     private void setClick() {
         btnAdd.setOnClickListener(v -> {
             addDish();
         });
+
+        btn_back.setOnClickListener(v -> {
+            back();
+        });
+    }
+
+    private void back(){
+        mainActivity.replaceFragmentSetting();
     }
 
     private void updateView() {
