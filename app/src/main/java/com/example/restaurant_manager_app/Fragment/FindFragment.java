@@ -76,7 +76,7 @@ public class FindFragment extends Fragment implements FindData {
     }
 
     public void findDish() {
-        String name = "'" + edName.getText().toString() + "'";
+        String name = "'%" + edName.getText().toString() + "%'";
         new ApiFindData(tableName, name, this).execute();
         updateView();
     }
