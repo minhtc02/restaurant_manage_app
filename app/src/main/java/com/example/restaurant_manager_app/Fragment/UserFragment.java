@@ -21,6 +21,7 @@ import com.example.restaurant_manager_app.Database.AccountDAO;
 import com.example.restaurant_manager_app.Model.Account;
 import com.example.restaurant_manager_app.R;
 
+
 public class UserFragment extends Fragment {
     Account account;
     AccountDAO dao;
@@ -131,21 +132,15 @@ public class UserFragment extends Fragment {
                     tvName.setText(account.getName());
                     tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
                     tvEmail.setText(account.getEmail());
-                    Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                    Glide.with(requireContext()).load(account.getImage()).into(imgImage);
                     btnSetting.setVisibility(View.VISIBLE);
                     break;
                 case "staff":
-                    tvName.setText(account.getName());
-                    tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
-                    tvEmail.setText(account.getEmail());
-                    Glide.with(getContext()).load(account.getImage()).into(imgImage);
-                    btnSetting.setVisibility(View.INVISIBLE);
-                    break;
                 case "customer":
                     tvName.setText(account.getName());
                     tvPhoneNum.setText("SĐT: " + account.getPhoneNum());
                     tvEmail.setText(account.getEmail());
-                    Glide.with(getContext()).load(account.getImage()).into(imgImage);
+                    Glide.with(requireContext()).load(account.getImage()).into(imgImage);
                     btnSetting.setVisibility(View.INVISIBLE);
                     break;
                 default:

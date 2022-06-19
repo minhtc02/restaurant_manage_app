@@ -31,12 +31,6 @@ public class AccountDAO {
         return db.insert("Account", null, values);
     }
 
-    //delete
-    public void delete(String id) {
-        db.delete("Account", "id=?", new String[]{id});
-    }
-
-    //delete
     public void resetA() {
         db.delete("Account", "", null);
     }
@@ -73,16 +67,6 @@ public class AccountDAO {
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getLS, null);
         if (cursor.getCount() != 0) {
             check = -1;// co
-        }
-        return check;
-    }
-
-    public int checkExistsCart(String id) {
-        int check = 1;
-        String getMG = "SELECT * FROM Account WHERE name=" + "'" + id + "'";
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(getMG, null);
-        if (cursor.getCount() != 0) {
-            check = -1;
         }
         return check;
     }

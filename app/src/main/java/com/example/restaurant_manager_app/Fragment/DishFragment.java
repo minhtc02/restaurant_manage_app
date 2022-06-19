@@ -3,7 +3,6 @@ package com.example.restaurant_manager_app.Fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +47,7 @@ public class DishFragment extends Fragment implements GetData, RunSql {
     Dialog dialog;
     EditText edId, edName, edDescribe, edVote, edPrice, edImage;
     Button btnSave, btnCancel, btn_choseimg;
-    ImageView img_item, imgback1;
+    ImageView img_item;
     Dish item;
 
     @Override
@@ -72,20 +71,8 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         new ApiGetData(tableName, this).execute();
         updateView();
         mySwipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        myUpdateOperation();
-                    }
-                }
+                this::myUpdateOperation
         );
-
-//        imgback1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view1) {
-//
-//            }
-//        });
         return view;
     }
 
@@ -113,12 +100,7 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Đã thêm vào giỏ hàng");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
         builder.show();
     }
 
@@ -130,12 +112,9 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Đã xóa");
         builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                myUpdateOperation();
-            }
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            dialog.cancel();
+            myUpdateOperation();
         });
         builder.show();
     }
@@ -162,23 +141,14 @@ public class DishFragment extends Fragment implements GetData, RunSql {
         edDescribe.setText(item.getDescribe());
         edVote.setText(item.getVote());
         edPrice.setText(item.getPrice());
-        edImage.setText(item.getImage().toString());
+        edImage.setText(item.getImage());
 
         img_item = dialog.findViewById(R.id.img_item);
         btn_choseimg = dialog.findViewById(R.id.btn_chonanh);
 
         Picasso.get().load(item.getImage()).into(img_item);
 
-//        btn_choseimg.setOnClickListener(v -> {
-//            requestPermissonChangImage();
-//        });
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
         btnSave.setOnClickListener(v -> {
             String id = edId.getText().toString();
             String name = edName.getText().toString();
@@ -239,43 +209,5 @@ public class DishFragment extends Fragment implements GetData, RunSql {
     public void error() {
         Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
     }
-
-//    private void requestPermissonChangImage() {
-//        PermissionListener permissionlistener = new PermissionListener() {
-//            @Override
-//            public void onPermissionGranted() {
-//                openImagePicker();
-//            }
-//
-//            @Override
-//            public void onPermissionDenied(List<String> deniedPermissions) {
-//                Toast.makeText(getContext(), "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        };
-//
-//        TedPermission.create()
-//                .setPermissionListener(permissionlistener)
-//                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
-//                .setPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                .check();
-//    }
-//
-//    private void openImagePicker() {
-//        TedBottomPicker.OnImageSelectedListener onImageSelectedListener = new TedBottomPicker.OnImageSelectedListener() {
-//            @Override
-//            public void onImageSelected(Uri uri) {
-//                try {
-//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
-//                    img_item.setImageBitmap(bitmap);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//
-//        TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(getContext())
-//                .setOnImageSelectedListener(onImageSelectedListener).create();
-//        tedBottomPicker.show(getParentFragmentManager());
-//    }
 
 }

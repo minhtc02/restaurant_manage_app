@@ -19,6 +19,7 @@ import com.example.restaurant_manager_app.Api.ApiRunSql;
 import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.R;
 
+
 public class AddDishFragment extends Fragment implements RunSql {
 
     View view;
@@ -64,19 +65,20 @@ public class AddDishFragment extends Fragment implements RunSql {
 //            requestPermissonChangImage();
 //        });
         imgBack.setOnClickListener(v -> mMainActivity.replaceFragmentSetting());
-        btnPreview.setOnClickListener(v -> Glide.with(getContext()).load(edImage.getText().toString()).into(img_item));
+        btnPreview.setOnClickListener(v -> Glide.with(requireContext()).load(edImage.getText().toString()).into(img_item));
         btnAdd.setOnClickListener(v -> addDish());
     }
 
     private void updateView() {
     }
-    private boolean validate(){
+
+    private boolean validate() {
         String name = edName.getText().toString();
         String describe = edDescribe.getText().toString();
         String vote = edVote.getText().toString();
         String price = edPrice.getText().toString();
         String image = edImage.getText().toString();
-        if (name.equals("")||describe.equals("")||vote.equals("")||price.equals("")||image.equals("")){
+        if (name.equals("") || describe.equals("") || vote.equals("") || price.equals("") || image.equals("")) {
             String m = "Bạn phải nhập đầy đủ thông tin";
             noitifyR(m);
             return false;
@@ -101,7 +103,7 @@ public class AddDishFragment extends Fragment implements RunSql {
                 "', '" +
                 image +
                 "')";
-        if (validate()){
+        if (validate()) {
             new ApiRunSql(sql, this).execute();
         }
     }
@@ -111,9 +113,10 @@ public class AddDishFragment extends Fragment implements RunSql {
     public void start() {
         //Toast.makeText(getActivity(), "Loading", Toast.LENGTH_SHORT).show();
     }
-    private void noitifyR(String message){
+
+    private void noitifyR(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage(""+message);
+        builder.setMessage("" + message);
         builder.setCancelable(true);
         builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
         builder.show();

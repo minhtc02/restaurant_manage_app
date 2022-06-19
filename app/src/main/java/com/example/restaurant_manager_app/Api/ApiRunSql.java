@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.example.restaurant_manager_app.Interface.RunSql;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -35,7 +36,7 @@ public class ApiRunSql extends AsyncTask<Void, Void, Void> {
         data = null;
         try {
             Response response = client.newCall(request).execute();
-            data = response.body().string();
+            data = Objects.requireNonNull(response.body()).string();
         } catch (IOException e) {
             data = null;
         }

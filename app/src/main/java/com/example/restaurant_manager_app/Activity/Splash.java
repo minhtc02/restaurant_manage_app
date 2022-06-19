@@ -15,7 +15,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(Splash.this, Check_internet.class);
+            Intent intent = new Intent(Splash.this, Check_Internet.class);
             startActivity(intent);
             finish();
         }, 1500);

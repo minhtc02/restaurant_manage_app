@@ -1,21 +1,16 @@
 package com.example.restaurant_manager_app.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.restaurant_manager_app.Api.ApiRunSql;
 import com.example.restaurant_manager_app.Database.CartDAO;
-import com.example.restaurant_manager_app.Interface.RunSql;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
@@ -24,6 +19,7 @@ public class Detail_Activity extends AppCompatActivity {
     ImageView imgDish;
     Button btnAdd, btnBack;
     CartDAO dao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,23 +43,14 @@ public class Detail_Activity extends AppCompatActivity {
         tvDescribe.setText(dish.getDescribe());
         Glide.with(this).load(dish.getImage()).into(imgDish);
 
-        btnBack.setOnClickListener(v -> {
-            startActivity(new Intent(this, MainActivity.class));
-        });
+        btnBack.setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
 
         btnAdd.setOnClickListener(v -> {
             dao.insert(dish);
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Đã thêm vào giỏ hàng");
             builder.setCancelable(true);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-
-            AlertDialog alert  = builder.create();
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
             builder.show();
         });
     }

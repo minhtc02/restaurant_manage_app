@@ -1,7 +1,7 @@
 package com.example.restaurant_manager_app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -41,6 +40,7 @@ public class CartFragment extends Fragment implements RunSql {
     TextView tvBill;
     String bill;
     Account account;
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -70,12 +70,12 @@ public class CartFragment extends Fragment implements RunSql {
         tvBill = view.findViewById(R.id.tvBill);
     }
 
+    @SuppressLint("SetTextI18n")
     private void setUp() {
-        list = (ArrayList<Dish>) cartDAO.getAll();
+        list = cartDAO.getAll();
         adapter = new CartAdapter(getContext(), this, list);
         listView.setAdapter(adapter);
         if (cartDAO.checkCart() > 0) {
-            //Toast.makeText(getContext(),"Giỏ hàng trống ",Toast.LENGTH_SHORT).show();
             tvBill.setText("Tổng tiền: 0");
         } else {
             bill = cartDAO.getBill();
@@ -89,27 +89,21 @@ public class CartFragment extends Fragment implements RunSql {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setMessage("Vui lòng chọn món ăn !!!");
             builder.setCancelable(true);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
             builder.show();
-        }else if(accountDAO.checkExist()>0){
+        } else if (accountDAO.checkExist() > 0) {
             liNotify();
-        }
-        else {
+        } else {
             String dishes = cartDAO.getDishes();
             account = accountDAO.getAll();
             String sql = "INSERT INTO `orders` (`id`, `name`, `phoneNum`, `dishes`, `time`, `bill`, `status`) VALUES (NULL, '" +
-                    account.getName()+
+                    account.getName() +
                     "', '" +
-                    account.getPhoneNum()+
+                    account.getPhoneNum() +
                     "', '" +
                     dishes +
                     "', '" +
-                    getNow()+
+                    getNow() +
                     "', '" +
                     bill +
                     "', 'Đang xử lý')";
@@ -120,14 +114,13 @@ public class CartFragment extends Fragment implements RunSql {
             setUp();
         }
     }
+
     private String getNow() {
         return sdf.format(Calendar.getInstance().getTime());
     }
 
     private void setClick() {
-        btnOrder.setOnClickListener(v -> {
-            addOrder();
-        });
+        btnOrder.setOnClickListener(v -> addOrder());
     }
 
     public void deleteFromCart(final String id) {
@@ -135,14 +128,15 @@ public class CartFragment extends Fragment implements RunSql {
         setUp();
     }
 
-    private void fnNotify(){
+    private void fnNotify() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Đặt thành công");
         builder.setCancelable(true);
         builder.setPositiveButton("OK", (dialog, which) -> dialog.cancel());
         builder.show();
     }
-    private void liNotify(){
+
+    private void liNotify() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Vui lòng đăng nhập");
         builder.setCancelable(true);

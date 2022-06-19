@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.example.restaurant_manager_app.Activity.MainActivity;
 import com.example.restaurant_manager_app.Model.Dish;
 import com.example.restaurant_manager_app.R;
 
@@ -28,8 +27,6 @@ public class ViewDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_view_detail, container, false);
-
-        MainActivity mMainActivity = (MainActivity) getActivity();
         imgDish = view.findViewById(R.id.imgDish);
         tvName = view.findViewById(R.id.tvName);
         tvDescribe = view.findViewById(R.id.tvDescribe);

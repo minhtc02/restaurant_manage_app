@@ -1,22 +1,19 @@
 package com.example.restaurant_manager_app.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.restaurant_manager_app.Database.CartDAO;
-import com.example.restaurant_manager_app.Model.Cart;
 import com.example.restaurant_manager_app.R;
 import com.example.restaurant_manager_app.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     TextView edFind;
     CartDAO dao;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         imgBell = findViewById(R.id.imgBell);
         imgCart = findViewById(R.id.imgCart);
         edFind = findViewById(R.id.edFind);
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
         String name = "Gà nướng muối ớt";
         dao = new CartDAO(this);
         if (dao.checkCart() < 0) {
@@ -70,16 +67,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyService.class);
         intent.putExtra("name", name);
         startService(intent);
-    }
-
-    public void stopServices() {
-        Intent intent = new Intent(this, MyService.class);
-        stopService(intent);
-    }
-
-
-    public void replaceFragment() {
-        viewPager.setCurrentItem(5);
     }
 
     public void replaceFragmentOrder() {

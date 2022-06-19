@@ -68,7 +68,7 @@ public class Register_Activity extends AppCompatActivity implements RunSql {
         String email = edEmail.getText().toString();
         String image = edImage.getText().toString();
         if (name.equals("") || username.equals("") || password.equals("") || phoneNum.equals("") || email.equals("") || image.equals("")) {
-            Toast.makeText(this,"Bạn phải nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

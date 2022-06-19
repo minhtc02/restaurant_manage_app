@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.restaurant_manager_app.R;
 
-public class Check_internet extends AppCompatActivity {
+public class Check_Internet extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +40,19 @@ public class Check_internet extends AppCompatActivity {
 
     public static class CheckConnetion {
         public static boolean haveNetworkConnection(Context context) {
-            boolean wifi = false, mobile = false;
+            boolean isConnect = false;
             ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo[] networkInfos = cm.getAllNetworkInfo();
             for (NetworkInfo info : networkInfos) {
                 if (info.getTypeName().equals("WIFI"))
                     if (info.isConnected())
-                        wifi = true;
+                        isConnect = true;
                 if (info.getTypeName().equals("MOBILE"))
                     if (info.isConnected())
-                        wifi = true;
+                        isConnect = true;
 
             }
-            return wifi || mobile;
+            return isConnect;
         }
 
         public static void ShowToastLong(Context context, String tb) {

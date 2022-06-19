@@ -24,7 +24,7 @@ public class MyService extends Service {
         String name = intent.getStringExtra("name");
         Intent intent1 = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, 0);
-        Notification notification = new NotificationCompat.Builder(this, appNotification.CHANNEL_ID)
+        Notification notification = new NotificationCompat.Builder(this, AppNotification.CHANNEL_ID)
                 .setSmallIcon(R.drawable.alerticon)
                 .setContentTitle(title)
                 .setContentText(name)
